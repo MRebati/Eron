@@ -1,0 +1,67 @@
+﻿@using Eron.core.App_GlobalResources
+@using Eron.web.Helpers
+@model IEnumerable<Eron.web.Areas.admin.Models.Language.LanguageList>
+@{ UICulture = Culture = "fa";}
+@Html.Action("BreadCrump", "Dashboard", new { title = ViewBag.Title, parent = GlobalResources.Settings, mid = GlobalResources.LanguageSetting, last = GlobalResources.AllLanguages, url = Url.Action("Index", "Content"), nav = false })
+
+<div class="wrapper wrapper-content fade">
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content no-padding">
+                        <div class="table-responsive">
+                            <div class="col-lg-12 p-md ibox-title">
+                                <h3 class="pull-right">@GlobalResources.AllLanguages</h3>
+                                <div class="">
+                                    @Ajax.DefaultLink(GlobalResources.CreateLanguage, "Create", "Language", true, null, new { @class = "btn btn-white btn-xs pull-left text-primary" })
+                                </div>
+                            </div>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="text-right">
+                                        @Html.DisplayNameFor(model => model.LocalName)
+                                    </th>
+                                    <th class="text-right">
+                                        @Html.DisplayNameFor(model => model.EnglishName)
+                                    </th>
+                                    <th class="text-right">
+                                        @Html.DisplayNameFor(model => model.FlagUrl)
+                                    </th>
+                                    <th class="text-right">
+                                        @Html.DisplayNameFor(model => model.LanguageCode)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LocalName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EnglishName)
+                                        </td>
+                                        <td>
+                                            <img src="@item.FlagUrl"/>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LanguageCode)
+                                        </td>
+                                        <td>
+                                            @Html.OptionBox("Language", "admin", item.Id)
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

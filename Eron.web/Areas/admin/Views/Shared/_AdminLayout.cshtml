@@ -1,0 +1,31 @@
+﻿@{
+    Culture = UICulture = "fa";
+    if (!Request["lang"].IsEmpty())
+    {
+        Culture = UICulture = Request["lang"];
+    }
+}
+<!DOCTYPE html>
+<html lang="fa-IR">
+@RenderPage("head/_head.cshtml")
+<body>
+    <div id="wrapper">
+        @RenderPage("side/_sidebar.cshtml")
+        <div id="page-wrapper" class="gray-bg">
+            @RenderPage("header/_haeder.cshtml")
+            <div id="mainpanel">
+                @RenderBody()
+            </div>
+            @RenderPage("footer/_footer.cshtml")
+        </div>
+    </div>
+    @RenderPage("toolbar/_toolbar.cshtml")
+    @* Scripts Section *@
+    @RenderPage("scripts/_common.cshtml")
+    @RenderPage("scripts/_flot.cshtml")
+    @RenderPage("scripts/_custom.cshtml")
+    @RenderPage("scripts/_sparkline.cshtml")
+    @RenderPage("scripts/_embded.cshtml")
+    @RenderSection("Scripts", false)
+</body>
+</html>

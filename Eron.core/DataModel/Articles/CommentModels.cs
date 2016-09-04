@@ -1,0 +1,21 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Eron.core.DataModel.Articles
+{
+    public class CommentArticle:EntityBase
+    {
+        public string UserId { get; set; }
+
+        public string ContentData { get; set; }
+
+        public bool ReplyToComment { get; set; }
+
+        public int BadAnswer { get; set; }
+
+        public Guid ArticleId { get; set; }
+
+        [ForeignKey("ArticleId")]
+        public Article Article { get; set; }
+    }
+}

@@ -1,0 +1,93 @@
+﻿@using Eron.core.App_GlobalResources
+@using Eron.web.Helpers
+@model Eron.web.Areas.admin.Models.Category.CategoryEdit
+@Html.Action("BreadCrump", "Dashboard", new { title = ViewBag.Title, parent = "مدیریت", mid = GlobalResources.AllCategories, last = GlobalResources.EditCategory, url = Url.Action("IndexPartial", "Dashboard"), nav = true })
+
+<div class="wrapper wrapper-content fade">
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        @using (Html.EditUploadForm("ContentCategory", "Edit", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(x => x.CreateTime)
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Id)
+                                @Html.HiddenFor(x => x.Background)
+                                @Html.HiddenFor(x => x.Image)
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.FileInput("image")
+                                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Background, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.FileInput("background")
+                                        @Html.ValidationMessageFor(model => model.Background, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.CheckBoxAddOn("Published",GlobalResources.Published,Model.Published,CheckBoxType.success)
+                                            @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PublishTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="input-group">
+                                            <div class="input-group-addon" data-mddatetimepicker="true" data-targetselector="#PublishTime" data-trigger="click" data-englishnumber="true" data-enabletimepicker="true">
+                                                <span class="ion ion-calendar"></span>
+                                            </div>
+                                            @Html.EditorFor(model => model.PublishTime, new { htmlAttributes = new { @class = "form-control",@style="direction:ltr;text-align:right;"} })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.PublishTime, "", new {@class = "text-danger"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="@GlobalResources.Save" class="btn btn-warning" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @Html.EditFormScript("ContentCategory","admin",GlobalResources.EditCategory)
+                        @Html.PersianDateTimeScript()
+                        <div>
+                            @Ajax.DefaultLink(GlobalResources.BackToList, "Index", "ContentCategory", true)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

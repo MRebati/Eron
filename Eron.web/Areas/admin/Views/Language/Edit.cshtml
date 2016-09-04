@@ -1,0 +1,73 @@
+﻿@using Eron.core.App_GlobalResources
+@using Eron.web.Helpers
+@model Eron.web.Areas.admin.Models.Language.LanguageEdit
+<div class="wrapper wrapper-content fade">
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h3>@GlobalResources.EditLanguage</h3>
+                        <div class="">
+                            @Ajax.DefaultLink(GlobalResources.CreateLanguage, "Create", "Language", true, null, new { @class = "btn btn-white btn-xs pull-left text-primary" })
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        @using (Html.EditUploadForm("Language", "Edit", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Id)
+                                @Html.HiddenFor(model => model.FlagUrl)
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LocalName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.LocalName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.LocalName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.EnglishName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.EnglishName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.EnglishName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FlagUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.FileInput("image")
+                                        @Html.ValidationMessageFor(model => model.FlagUrl, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LanguageCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.LanguageCode, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.LanguageCode, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="@GlobalResources.Save" class="btn btn-warning pull-left" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @Html.EditFormScript("Language", "admin", GlobalResources.EditLanguage)
+                        <div>
+                            @Ajax.DefaultLink(GlobalResources.BackToList, "Index", "Language", true)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

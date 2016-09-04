@@ -1,0 +1,93 @@
+﻿@using Eron.core.App_GlobalResources
+@using Eron.web.Helpers
+
+@model Eron.web.Areas.admin.Models.Category.CategoryCreate
+@{ UICulture = Culture = "fa";}
+@Html.Action("BreadCrump", "Dashboard", new { title = ViewBag.Title, parent = "مدیریت", mid = "فروشگاه", last = "لیست همه فروشگاه ها", url = Url.Action("IndexPartial", "Dashboard"), nav = true })
+
+<div class="wrapper wrapper-content fade">
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        
+                        @using (Html.CreateUploadForm("ContentCategory", "Create", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new {@class = "control-label col-md-2"})
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.Name,  new {@class = "form-control"})
+                                        @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new {@class = "control-label col-md-2"})
+                                    <div class="col-md-10">
+                                        @Html.TextAreaFor(model => model.Description, new {@class = "form-control"})
+                                        @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Image, htmlAttributes: new {@class = "control-label col-md-2"})
+                                    <div class="col-md-10">
+                                        @Html.FileInput("image")
+                                        @Html.ValidationMessageFor(model => model.Image, "", new {@class = "text-danger"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Background, htmlAttributes: new {@class = "control-label col-md-2"})
+                                    <div class="col-md-10">
+                                        @Html.FileInput("background")
+                                        @Html.ValidationMessageFor(model => model.Background, "", new {@class = "text-danger"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Published, htmlAttributes: new {@class = "control-label col-md-2"})
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.CheckBoxAddOn("Published",GlobalResources.Published,false,CheckBoxType.success)
+                                            @Html.ValidationMessageFor(model => model.Published, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PublishTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="input-group">
+                                            <div class="input-group-addon" data-mddatetimepicker="true" data-targetselector="#PublishTime" data-trigger="click" data-enabletimepicker="true" data-englishnumber = "true" >
+                                                <span class="ion ion-calendar"></span>
+                                            </div>
+                                            @Html.TextBoxFor(model => model.PublishTime, new { @class = "form-control", @style = "direction:ltr;text-align:right;" })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.PublishTime, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="submit" value="@GlobalResources.Create" class="btn btn-success pull-left"/>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <script>
+                            EnableMdDateTimePickers();
+                        </script>
+                        @Html.CreateFormScript("ContentCategory","admin",GlobalResources.CreateCategory)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

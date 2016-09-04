@@ -1,0 +1,103 @@
+﻿@using Eron.core.App_GlobalResources
+@using Eron.web.Helpers
+@model Eron.web.Areas.admin.Models.Content.ContentListView
+
+<div class="wrapper wrapper-content fade">
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>@GlobalResources.DeleteConfirmationMessage</h3>
+                        <div>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Title)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Title)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Slug)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Slug)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.CreateTime)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.CreateTime)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ModifiedTime)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ModifiedTime)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Author)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Author)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.CategoryName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.CategoryName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.State)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.State)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PublishStartTime)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PublishStartTime)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PublishEndTime)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PublishEndTime)
+                                </dd>
+
+                            </dl>
+
+                            @using (Ajax.DefaultForm("Delete","Content",FormMethod.Post, new {id = Model.Id},null,GlobalResources.DeleteContent))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="@GlobalResources.Delete" class="btn btn-danger" /> |
+                                    @Ajax.DefaultLink(GlobalResources.BackToList, "Index", "Content", true)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

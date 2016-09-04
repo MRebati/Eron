@@ -1,0 +1,92 @@
+﻿@using Eron.core.App_GlobalResources
+@using Eron.web.Helpers
+@model IEnumerable<Eron.web.Areas.admin.Models.Content.ContentListView>
+
+@{ UICulture = Culture = "fa";}
+@Html.Action("BreadCrump", "Dashboard", new { title = ViewBag.Title, parent = GlobalResources.ContentManagement, mid = GlobalResources.Content, last = GlobalResources.AllContent, url = Url.Action("IndexPartial", "Dashboard"), nav = true })
+
+<div class="wrapper wrapper-content fade">
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content no-padding">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-right">
+                                            @Html.DisplayNameFor(model => model.Title)
+                                        </th>
+                                        <th class="text-right">
+                                            @Html.DisplayNameFor(model => model.Slug)
+                                        </th>
+                                        <th class="text-right">
+                                            @Html.DisplayNameFor(model => model.CreateTime)
+                                        </th>
+                                        <th class="text-right">
+                                            @Html.DisplayNameFor(model => model.ModifiedTime)
+                                        </th>
+                                        <th class="text-right">
+                                            @Html.DisplayNameFor(model => model.Author)
+                                        </th>
+                                        <th class="text-right">
+                                            @Html.DisplayNameFor(model => model.CategoryName)
+                                        </th>
+                                        <th class="text-right">
+                                            @Html.DisplayNameFor(model => model.State)
+                                        </th>
+                                        <th class="text-right">
+                                            @Html.DisplayNameFor(model => model.PublishStartTime)
+                                        </th>
+                                        <th class="text-right">
+                                            @Html.DisplayNameFor(model => model.PublishEndTime)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Title)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Slug)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CreateTime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ModifiedTime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Author)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CategoryName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.State)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PublishStartTime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PublishEndTime)
+                                            </td>
+                                            <td>
+                                                @Html.OptionBox("content", "admin", item.Id)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

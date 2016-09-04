@@ -1,0 +1,103 @@
+﻿@using Eron.core.App_GlobalResources
+@using Eron.web.Helpers
+@model Eron.web.Areas.admin.Models.Page.PageCreate
+
+@{ UICulture = Culture = "fa";}
+@Html.Action("BreadCrump", "Dashboard", new { title = ViewBag.Title, parent = GlobalResources.PageManagement, mid = GlobalResources.Pages, last = GlobalResources.AllPages, url = Url.Action("Index", "Page"), nav = true })
+
+<div class="wrapper wrapper-content fade">
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+
+                @using (Ajax.DefaultForm("Create", "Page", FormMethod.Post, null, null, GlobalResources.CreatePage))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>@GlobalResources.DefaultDetails</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            @Html.PlaceHolderFor(model => model.Title, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            @Html.PlaceHolderFor(model => model.Slug, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            @Html.DropDownList("Language", null, GlobalResources.Language, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            @Html.TagInput(x => x.Keywords, GlobalResources.Keywords)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @placeholder = GlobalResources.Description })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>@GlobalResources.Editor</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content no-padding">
+                                <div class="row no-margins no-padding">
+                                    @Html.TextAreaFor(x => x.Content, new { @class = "summernote" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <div class="col-lg-2 pull-left">
+                                        <input type="submit" class="btn btn-primary btn-block" value="@GlobalResources.Create" />
+                                    </div>
+                                    <div class="col-lg-2 pull-left">@Ajax.DefaultLink(GlobalResources.BackToList, "Index", "Page", true, null, new { @class = "btn btn-warning btn-outline btn-block" })</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.CreateFormScript(GlobalResources.CreatePage)
+@Html.TagInputScript()
+<script>
+    $('.summernote').summernote();
+</script>

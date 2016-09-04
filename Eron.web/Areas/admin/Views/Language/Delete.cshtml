@@ -1,0 +1,72 @@
+﻿@using Eron.core.App_GlobalResources
+@using Eron.web.Helpers
+@model Eron.web.Areas.admin.Models.Language.LanguageList
+
+<div class="wrapper wrapper-content fade">
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h3>@GlobalResources.DeleteLanguage</h3>
+                    <div class="">
+                        @Ajax.DefaultLink(GlobalResources.CreateLanguage, "Create", "Language", true, null, new { @class = "btn btn-white btn-xs pull-left text-primary" })
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="">
+
+                        <h3>@GlobalResources.DeleteConfirmationMessage</h3>
+                        <div>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.LocalName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.LocalName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.EnglishName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.EnglishName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FlagUrl)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.FlagUrl)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.LanguageCode)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.LanguageCode)
+                                </dd>
+
+                            </dl>
+
+                            @using (Ajax.DefaultForm("Delete", "Language", FormMethod.Post, new { id = Model.Id }, null, GlobalResources.DeleteLanguage))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="@GlobalResources.Delete" class="btn btn-danger" /> |
+                                    @Ajax.DefaultLink(GlobalResources.BackToList, "Index", "Language", true)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
