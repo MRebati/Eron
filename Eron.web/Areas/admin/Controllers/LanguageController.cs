@@ -54,11 +54,11 @@ namespace Eron.web.Areas.admin.Controllers
             return PartialView(model);
         }
 
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
-            if (String.IsNullOrEmpty(id))
+            if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var model = Service.Languages.Get(id);
+            var model = Service.Languages.Get(id.Value);
             if (model == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             var category = ModelFactory.EditCreate(model);
@@ -86,11 +86,11 @@ namespace Eron.web.Areas.admin.Controllers
             return PartialView(model);
         }
 
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
-            if (String.IsNullOrEmpty(id))
+            if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var model = Service.Languages.Get(id);
+            var model = Service.Languages.Get(id.Value);
             //if (model == null)
             //    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             var category = ModelFactory.ListCreate(model);
@@ -98,7 +98,7 @@ namespace Eron.web.Areas.admin.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             var model = Service.Languages.Get(id);
             if (!String.IsNullOrEmpty(model.FlagUrl))

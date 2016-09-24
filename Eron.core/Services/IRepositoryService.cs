@@ -24,73 +24,73 @@ namespace Eron.core.Services
         /// <summary>
         /// This Repository will return CRUD Actions related to Contents.
         /// </summary>
-        Repository<Content> Contents { get; }
+        Repository<Content,long> Contents { get; }
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Content Categories.
         /// </summary>
-        Repository<Category> Categories { get; }
+        Repository<Category,long> Categories { get; }
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Content Comments.
         /// </summary>
-        Repository<CommentContent> ContentComments { get; }
+        Repository<CommentContent,Guid> ContentComments { get; }
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Content Likes.
         /// </summary>
-        Repository<LikeContent> ContentLikes { get; }
+        Repository<LikeContent,Guid> ContentLikes { get; }
 
         //Article
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Articles.
         /// </summary>
-        Repository<Article> ArticleContents { get; }
+        Repository<Article,long> ArticleContents { get; }
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Article Categories.
         /// </summary>
-        Repository<ArticleCategory> ArticleCategories { get; }
+        Repository<ArticleCategory,long> ArticleCategories { get; }
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Article Comments.
         /// </summary>
-        Repository<CommentArticle> ArticleComments { get; }
+        Repository<CommentArticle,Guid> ArticleComments { get; }
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Article Likes.
         /// </summary>
-        Repository<LikeArticle> ArticleLikes { get; }
+        Repository<LikeArticle,Guid> ArticleLikes { get; }
 
         //Search
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Tags.
         /// </summary>
-        Repository<Tag> Tags { get; }
+        Repository<Tag,long> Tags { get; }
 
         //Location
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Maps.
         /// </summary>
-        Repository<GoogleMap> Maps { get; }
+        Repository<GoogleMap,Guid> Maps { get; }
 
         /// <summary>
         /// This Repository will return CRUD Actions related to States.
         /// </summary>
-        Repository<State> States { get; }
+        Repository<State,long> States { get; }
 
         /// <summary>
         /// This Repository will return CRUD Actions related to SubStates.
         /// </summary>
-        Repository<SubState> SubStates { get; }
+        Repository<SubState,long> SubStates { get; }
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Languages.
         /// </summary>
-        Repository<Language> Languages { get; }
+        Repository<Language,int> Languages { get; }
 
         //Identity
 
@@ -104,18 +104,18 @@ namespace Eron.core.Services
         /// <summary>
         /// This Repository will return CRUD Actions related to Pages.
         /// </summary>
-        Repository<Page> Pages { get; }
+        Repository<Page,int> Pages { get; }
 
         //Navigation
 
         /// <summary>
         /// This Repository will return CRUD Actions related to Menues.
         /// </summary>
-        Repository<Menu> Menues { get; }
+        Repository<Menu,int> Menues { get; }
 
         /// <summary>
         /// This Repository will return CRUD Action related to Footers.
         /// </summary>
-        Repository<Footer> Footers { get; } 
+        Repository<Footer,int> Footers { get; } 
     }
 }

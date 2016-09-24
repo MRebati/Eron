@@ -9,7 +9,7 @@ namespace Eron.core.DataModel.Product
         Integer
     }
 
-    public class ProductProperty:EntityBase
+    public class ProductProperty:EntityBase<Guid>
     {
         public Guid ProductId { get; set; }
 

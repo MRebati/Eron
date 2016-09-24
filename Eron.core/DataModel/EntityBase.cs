@@ -2,8 +2,8 @@
 
 namespace Eron.core.DataModel
 {
-    public class EntityBase
+    public class EntityBase<TKey>
     {
-        public Guid Id { get; set; }
+        public TKey Id { get; set; }
     }
 }

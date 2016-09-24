@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace Eron.core.DataModel.Articles
 {
-    public class ArticleCategory:EntityBase
+    public class ArticleCategory:EntityBase<long>
     {
         public string Name { get; set; }
 

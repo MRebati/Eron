@@ -6,7 +6,7 @@ using Eron.core.DataModel.Articles;
 
 namespace Eron.core.DataAccess.Repositories.Articles
 {
-    public class ArticleCategoryRepository: Repository<ArticleCategory>
+    public class ArticleCategoryRepository: Repository<ArticleCategory,long>
     {
         public ArticleCategoryRepository(ApplicationDbContext context, Encode.Encode encode) : base(context, encode) { }
     }

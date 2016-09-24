@@ -64,11 +64,11 @@ namespace Eron.web.Areas.admin.Controllers.Settings
             return PartialView();
         }
 
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int? id)
         {
-            if(id == null || id.Length != 11)
+            if(id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var model = await Service.Menues.GetAsync(id);
+            var model = await Service.Menues.GetAsync(id.Value);
             if(model == null)
                 return new HttpNotFoundResult();
             ViewBag.MenuId =
@@ -88,18 +88,18 @@ namespace Eron.web.Areas.admin.Controllers.Settings
             return PartialView();
         }
 
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int? id)
         {
-            if(id == null || id.Length != 11)
+            if(id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var model = await Service.Menues.GetAsync(id);
+            var model = await Service.Menues.GetAsync(id.Value);
             if (model == null)
                 return new HttpNotFoundResult();
             return PartialView(model);
         }
 
         [HttpPost,ActionName("Delete")]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             await Service.Menues.RemoveAsync(id);
             return PartialView();

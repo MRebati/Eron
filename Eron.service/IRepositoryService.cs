@@ -20,49 +20,49 @@ namespace Eron.service
     public interface IRepositoryService
     {
         [OperationContract]
-        Repository<Content> Contents();
+        Repository<Content,long> Contents();
 
         [OperationContract]
-        Repository<Category> Categories();
+        Repository<Category,long> Categories();
 
         [OperationContract]
-        Repository<CommentContent> ContentComments();
+        Repository<CommentContent, Guid> ContentComments();
 
         [OperationContract]
-        Repository<LikeContent> ContentLikes();
+        Repository<LikeContent, Guid> ContentLikes();
 
         //Article
         [OperationContract]
-        Repository<Article> ArticleContents();
+        Repository<Article,long> ArticleContents();
 
         [OperationContract]
-        Repository<ArticleCategory> ArticleCategories();
+        Repository<ArticleCategory,long> ArticleCategories();
 
         [OperationContract]
-        Repository<CommentArticle> ArticleComments();
+        Repository<CommentArticle, Guid> ArticleComments();
 
         [OperationContract]
-        Repository<LikeArticle> ArticleLikes();
+        Repository<LikeArticle, Guid> ArticleLikes();
 
         //Search
         [OperationContract]
-        Repository<Tag> Tags();
+        Repository<Tag,long> Tags();
 
         //Location
         [OperationContract]
-        Repository<GoogleMap> Maps();
+        Repository<GoogleMap,Guid> Maps();
 
         [OperationContract]
-        Repository<State> States();
+        Repository<State,long> States();
 
         [OperationContract]
-        Repository<SubState> SubStates();
+        Repository<SubState,long> SubStates();
 
         [OperationContract]
-        Repository<Language> Languages();
+        Repository<Language,int> Languages();
 
         //Page
         [OperationContract]
-        Repository<Page> Pages();
+        Repository<Page,int> Pages();
     }
 }

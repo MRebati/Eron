@@ -50,6 +50,7 @@ namespace Eron.web.Areas.admin.Models
 
         //SelectList
         SelectListItem SelectList(string name, Guid id);
+        SelectListItem SelectList(string name, long id);
         SelectListItem SelectList(string name, string id);
 
         //Page

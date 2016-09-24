@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Eron.core.DataModel.Articles
 {
-    public class CommentArticle:EntityBase
+    public class CommentArticle:EntityBase<Guid>
     {
         public string UserId { get; set; }
 

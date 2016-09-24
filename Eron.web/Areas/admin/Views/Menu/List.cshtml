@@ -48,7 +48,7 @@
                     @Html.DisplayFor(modelItem => item.Type)
                 </td>
                 <td>
-                    @Html.EditDeleteOptionBox("Menu", "admin", item.Id)
+                    @Html.EditDeleteOptionBox("Menu", "admin", item.Id.ToString())
                 </td>
             </tr>
         }

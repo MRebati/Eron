@@ -2,7 +2,7 @@
 
 namespace Eron.core.DataModel.Content
 {
-    public class LikeContent:ReportingBase
+    public class LikeContent:EntityBase<Guid>
     {
 
         public Guid ContentId { get; set; }
@@ -10,5 +10,7 @@ namespace Eron.core.DataModel.Content
         public string UserId { get; set; }
 
         public bool Viewed { get; set; }
+
+        public DateTime DateTime { get; set; }
     }
 }

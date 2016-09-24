@@ -10,7 +10,7 @@ namespace Eron.web.Areas.admin.Models.Content
 {
     public class ContentEdit
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         [Display(Name = "Title", ResourceType = typeof(GlobalResources))]
         [Required(ErrorMessageResourceType = typeof(GlobalResources), ErrorMessageResourceName = "Required")]

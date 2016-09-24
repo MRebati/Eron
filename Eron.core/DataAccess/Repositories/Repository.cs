@@ -9,7 +9,7 @@ using Microsoft.Ajax.Utilities;
 
 namespace Eron.core.DataAccess.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : EntityBase
+    public class Repository<T,TKey> : IRepository<T,TKey> where T : EntityBase<TKey>
     {
         private ApplicationDbContext _context;
         private Encode.Encode _encode;
@@ -35,16 +35,14 @@ namespace Eron.core.DataAccess.Repositories
             return _context.Set<T>();
         }
 
-        public virtual T Get(string id)
+        public T Get(TKey id)
         {
-            var code = _encode.GetGuid(id);
-            return _context.Set<T>().Find(code);
+            return _context.Set<T>().Find(id);
         }
 
-        public async Task<T> GetAsync(string id)
+        public Task<T> GetAsync(TKey id)
         {
-            var code = _encode.GetGuid(id);
-            return await _context.Set<T>().FindAsync(code);
+            return _context.Set<T>().FindAsync(id);
         }
 
         public virtual T Get(Guid id)
@@ -85,30 +83,14 @@ namespace Eron.core.DataAccess.Repositories
             return obj;
         }
 
-        public virtual int Remove(string id)
-        {
-            var code = _encode.GetGuid(id);
-            var obj = _context.Set<T>().Find(code);
-            _context.Set<T>().Remove(obj);
-            return _context.SaveChanges();
-
-        }
-
-        public async Task<int> RemoveAsync(string id)
-        {
-            var obj = _context.Set<T>().Find(id);
-            _context.Set<T>().Remove(obj);
-            return await _context.SaveChangesAsync();
-        }
-
-        public int Remove(Guid id)
+        public int Remove(TKey id)
         {
             var obj = _context.Set<T>().Find(id);
             _context.Set<T>().Remove(obj);
             return _context.SaveChanges();
         }
 
-        public async Task<int> RemoveAsync(Guid id)
+        public async Task<int> RemoveAsync(TKey id)
         {
             var obj = _context.Set<T>().Find(id);
             _context.Set<T>().Remove(obj);

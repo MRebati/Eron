@@ -1,6 +1,8 @@
-﻿namespace Eron.core.DataModel.File
+﻿using System;
+
+namespace Eron.core.DataModel.File
 {
-    public class File:EntityBase
+    public class File:EntityBase<Guid>
     {
 
         public string Name { get; set; }

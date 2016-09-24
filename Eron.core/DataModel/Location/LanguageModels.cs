@@ -1,6 +1,6 @@
 ﻿namespace Eron.core.DataModel.Location
 {
-    public class Language:EntityBase
+    public class Language:EntityBase<int>
     {
         public string LocalName { get; set; }
 

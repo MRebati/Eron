@@ -27,88 +27,88 @@ namespace Eron.service
         private ApplicationDbContext _context;
         private AppUser user;
         private core.Encode.Encode _encode;
-        private Repository<Article> _article;
-        private Repository<Content> _content;
-        private Repository<ArticleCategory> _articleCategory;
-        private Repository<Category> _contentCategory;
-        private Repository<LikeArticle> _articleLike;
-        private Repository<LikeContent> _contentLike;
-        private Repository<CommentArticle> _articleComment;
-        private Repository<CommentContent> _contentComment;
-        private Repository<Tag> _tag;
-        private Repository<State> _state;
-        private Repository<SubState> _subState;
-        private Repository<GoogleMap> _map;
-        private Repository<Language> _language;
-        private Repository<Page> _page;
+        private Repository<Article,long> _article;
+        private Repository<Content,long> _content;
+        private Repository<ArticleCategory,long> _articleCategory;
+        private Repository<Category,long> _contentCategory;
+        private Repository<LikeArticle,Guid> _articleLike;
+        private Repository<LikeContent,Guid> _contentLike;
+        private Repository<CommentArticle,Guid> _articleComment;
+        private Repository<CommentContent,Guid> _contentComment;
+        private Repository<Tag,long> _tag;
+        private Repository<State,long> _state;
+        private Repository<SubState,long> _subState;
+        private Repository<GoogleMap, Guid> _map;
+        private Repository<Language,int> _language;
+        private Repository<Page,int> _page;
 
-        public Repository<Content> Contents()
+        public Repository<Content,long> Contents()
         {
             return _content ?? (_content = new ContentRepository(_context, _encode));
         }
 
-        public Repository<Category> Categories()
+        public Repository<Category,long> Categories()
         {
             return _contentCategory ?? (_contentCategory = new CategoryRepository(_context, _encode));
         }
 
-        public Repository<CommentContent> ContentComments()
+        public Repository<CommentContent, Guid> ContentComments()
         {
             return _contentComment ?? (_contentComment = new CommentRepository(_context, _encode));
         }
 
-        public Repository<LikeContent> ContentLikes()
+        public Repository<LikeContent, Guid> ContentLikes()
         {
             return _contentLike ?? (_contentLike = new LikeRepository(_context, _encode));
         }
 
-        public Repository<Article> ArticleContents()
+        public Repository<Article, long> ArticleContents()
         {
             return _article ?? (_article = new ArticleRepository(_context, _encode));
         }
 
-        public Repository<ArticleCategory> ArticleCategories()
+        public Repository<ArticleCategory, long> ArticleCategories()
         {
             return _articleCategory ?? (_articleCategory = new ArticleCategoryRepository(_context, _encode));
         }
 
-        public Repository<CommentArticle> ArticleComments()
+        public Repository<CommentArticle, Guid> ArticleComments()
         {
             return _articleComment ??
                    (_articleComment = new core.DataAccess.Repositories.Articles.CommentRepository(_context, _encode));
         }
 
-        public Repository<LikeArticle> ArticleLikes()
+        public Repository<LikeArticle, Guid> ArticleLikes()
         {
             return _articleLike ?? (_articleLike = new ArticleLikeRepository(_context, _encode));
         }
 
-        public Repository<Tag> Tags()
+        public Repository<Tag, long> Tags()
         {
             return _tag ?? (_tag = new TagRepository(_context, _encode));
         }
 
-        public Repository<GoogleMap> Maps()
+        public Repository<GoogleMap, Guid> Maps()
         {
             return _map ?? (_map = new GoogleMapRepository(_context, _encode));
         }
 
-        public Repository<State> States()
+        public Repository<State, long> States()
         {
             return _state ?? (_state = new StateRepository(_context, _encode));
         }
 
-        public Repository<SubState> SubStates()
+        public Repository<SubState, long> SubStates()
         {
             return _subState ?? (_subState = new SubStateRepository(_context, _encode));
         }
 
-        public Repository<Language> Languages()
+        public Repository<Language, int> Languages()
         {
             return _language ?? (_language = new LanguageRepository(_context, _encode));
         }
 
-        public Repository<Page> Pages()
+        public Repository<Page, int> Pages()
         {
             return _page ?? (_page = new PageRepository(_context, _encode));
         }

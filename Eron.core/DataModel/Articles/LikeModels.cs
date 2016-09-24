@@ -2,7 +2,7 @@
 
 namespace Eron.core.DataModel.Articles
 {
-    public class LikeArticle:EntityBase
+    public class LikeArticle:EntityBase<Guid>
     {
         public Guid ArticleId { get; set; }
 

@@ -7,7 +7,7 @@ using Eron.core.DataModel;
 
 namespace Eron.core.DataAccess.Repositories
 {
-    public interface IRepository<T> where T : EntityBase
+    public interface IRepository<T,TKey> where T : EntityBase<TKey>
     {
         List<T> Get();
 
@@ -15,13 +15,9 @@ namespace Eron.core.DataAccess.Repositories
 
         IQueryable<T> GetIQueryable();
 
-        T Get(string id);
+        T Get(TKey id);
 
-        Task<T> GetAsync(string id);
-
-        T Get(Guid id);
-
-        Task<T> GetAsync(Guid id);
+        Task<T> GetAsync(TKey id);
 
         T Update(T obj);
 
@@ -31,11 +27,7 @@ namespace Eron.core.DataAccess.Repositories
 
         Task<T> InsertAsync(T obj);
 
-        int Remove(string id);
-        Task<int> RemoveAsync(string id);
-
-        int Remove(Guid id);
-
-        Task<int> RemoveAsync(Guid id);
+        int Remove(TKey id);
+        Task<int> RemoveAsync(TKey id);
     }
 }

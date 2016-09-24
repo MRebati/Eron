@@ -1,6 +1,6 @@
 ﻿namespace Eron.core.DataModel
 {
-    public class VoteBase:EntityBase
+    public class VoteBase<TKey>:EntityBase<TKey>
     {
         public long PositiveVote { get; set; }
 

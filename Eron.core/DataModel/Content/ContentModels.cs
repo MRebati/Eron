@@ -7,7 +7,7 @@ using Eron.core.ValueObjects;
 
 namespace Eron.core.DataModel.Content
 {
-    public class Content : ReportingBase,IInsight
+    public class Content : ReportingBase<long>,IInsight
     {
         public string Slug { get; set; }
 

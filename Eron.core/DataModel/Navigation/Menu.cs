@@ -4,7 +4,7 @@ using Eron.core.ValueObjects;
 
 namespace Eron.core.DataModel.Navigation
 {
-    public class Menu: EntityBase
+    public class Menu: EntityBase<int>
     {
         public string Name { get; set; }
 

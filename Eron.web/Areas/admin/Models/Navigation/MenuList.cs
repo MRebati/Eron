@@ -10,7 +10,7 @@ namespace Eron.web.Areas.admin.Models.Navigation
     public class MenuList
     {
         [Display(Name="Id",ResourceType = typeof(GlobalResources))]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Name", ResourceType = typeof(GlobalResources))]
         public string Name { get; set; }

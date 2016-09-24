@@ -63,7 +63,7 @@ namespace Eron.web.Areas.admin.Models
                 PublishStartTime = persianCalendar.PersianDate(model.PublishStartTime),
                 PublishEndTime = persianCalendar.PersianDate(model.PublishEndTime),
                 State = model.Published ? GlobalResources.Published : GlobalResources.Unpublished,
-                Id = encode.GetString(model.Id),
+                Id = model.Id,
                 Slug = model.Slug,
                 Title = model.Title
             };
@@ -80,7 +80,6 @@ namespace Eron.web.Areas.admin.Models
                 ContentData = model.Content,
                 CreateTime = DateTime.Now,
                 ModifiedTime = DateTime.Now,
-                Id = encode.CreateGuid(),
                 ImageUrl = model.ImageUrl,
                 Published = model.Published,
                 PublishStartTime = persianCalendar.GregorianDateTime(model.PublishStartTime),
@@ -106,7 +105,7 @@ namespace Eron.web.Areas.admin.Models
                 Content = model.ContentData,
                 CreateTime = model.CreateTime,
                 ModifiedTime = DateTime.Now,
-                Id = encode.GetString(model.Id),
+                Id = model.Id,
                 ImageUrl = model.ImageUrl,
                 Published = model.Published,
                 PublishStartTime = persianCalendar.PersianDateTime(model.PublishStartTime),
@@ -126,7 +125,7 @@ namespace Eron.web.Areas.admin.Models
         {
             return new core.DataModel.Content.Content()
             {
-                Id = encode.GetGuid(model.Id),
+                Id = model.Id,
                 Title = model.Title,
                 Summery = model.Summery,
                 Author = HttpContext.Current.User.Identity.GetUserId(),
@@ -165,7 +164,7 @@ namespace Eron.web.Areas.admin.Models
                 Image = model.ImageUrl,
                 Published = model.Published,
                 Name = model.Name,
-                Id = encode.GetString(model.Id),
+                Id = model.Id,
                 CreateTime = model.CreateTime,
                 PublishTime = persianCalendar.PersianDateTime(model.PublishTime)
             };
@@ -184,7 +183,7 @@ namespace Eron.web.Areas.admin.Models
                 CreateTime = persianCalendar.PersianDate(model.CreateTime),
                 ModifiedTime = persianCalendar.PersianDate(model.ModifiedTime),
                 Description = model.Description,
-                Id = encode.GetString(model.Id),
+                Id = model.Id,
                 Name = model.Name,
                 State = model.Published ? GlobalResources.Published : GlobalResources.Unpublished
             };
@@ -202,7 +201,6 @@ namespace Eron.web.Areas.admin.Models
                 Name = model.Name,
                 Published = model.Published,
                 PublishTime = !string.IsNullOrEmpty(model.PublishTime) ? persianCalendar.GregorianDateTime(model.PublishTime) : DateTime.Now,
-                Id = encode.CreateGuid(),
                 ImageUrl = model.Image
             };
         }
@@ -217,7 +215,7 @@ namespace Eron.web.Areas.admin.Models
                 CreateTime = model.CreateTime,
                 ModifiedTime = DateTime.Now,
                 Description = model.Description,
-                Id = encode.GetGuid(model.Id),
+                Id = model.Id,
                 ImageUrl = model.Image,
                 PublishTime = !string.IsNullOrEmpty(model.PublishTime) ? persianCalendar.GregorianDateTime(model.PublishTime) : DateTime.Now,
                 Published = model.Published
@@ -229,7 +227,6 @@ namespace Eron.web.Areas.admin.Models
         {
             return new core.DataModel.Location.Language()
             {
-                Id = encode.CreateGuid(),
                 EnglishName = model.EnglishName,
                 FlagUrl = model.FlagUrl,
                 LocalName = model.LocalName,
@@ -243,7 +240,6 @@ namespace Eron.web.Areas.admin.Models
             {
                 EnglishName = model.EnglishName,
                 FlagUrl = model.FlagUrl,
-                Id = encode.GetGuid(model.Id),
                 LanguageCode = model.LanguageCode,
                 LocalName = model.LocalName
             };
@@ -255,7 +251,7 @@ namespace Eron.web.Areas.admin.Models
             {
                 EnglishName = model.EnglishName,
                 FlagUrl = model.FlagUrl,
-                Id = encode.GetString(model.Id),
+                Id = model.Id,
                 LanguageCode = model.LanguageCode,
                 LocalName = model.LocalName
             };
@@ -267,7 +263,7 @@ namespace Eron.web.Areas.admin.Models
             {
                 EnglishName = model.EnglishName,
                 FlagUrl = model.FlagUrl,
-                Id = encode.GetString(model.Id),
+                Id = model.Id,
                 LanguageCode = model.LanguageCode,
                 LocalName = model.LocalName
             };
@@ -277,6 +273,11 @@ namespace Eron.web.Areas.admin.Models
         public SelectListItem SelectList(string name, Guid id)
         {
             return new SelectListItem() { Id = encode.GetString(id), Name = name };
+        }
+
+        public SelectListItem SelectList(string name, long id)
+        {
+            return SelectList(name,id.ToString());
         }
 
         public SelectListItem SelectList(string name, string id)
@@ -289,7 +290,7 @@ namespace Eron.web.Areas.admin.Models
             var username = service.User.Users.Find(model.UserId);
             return new PageList
             {
-                Id = encode.GetString(model.Id),
+                Id = model.Id,
                 CreateTime = persianCalendar.PersianDate(model.CreateTime),
                 Language = model.Language,
                 PageUrl = model.Slug,
@@ -302,7 +303,7 @@ namespace Eron.web.Areas.admin.Models
         {
             return new core.DataModel.Page.Page
             {
-                Id = !String.IsNullOrEmpty(model.Id) ? encode.GetGuid(model.Id) : encode.CreateGuid(),
+                Id = model.Id,
                 Content = model.Content,
                 CreateTime = model.CreateTime ?? DateTime.Now,
                 Language = model.Language,
@@ -317,7 +318,7 @@ namespace Eron.web.Areas.admin.Models
         {
             return new Menu()
             {
-                Id = !String.IsNullOrEmpty(model.Id) ? encode.GetGuid(model.Id) : encode.CreateGuid(),
+                Id = model.Id?? new int(),
                 Name = model.Name,
                 MenuId = String.IsNullOrEmpty(model.MenuId) ? Guid.Empty : encode.GetGuid(model.MenuId),
                 Target = model.Target != null && model.Target.Value ? "_self" : "_blank",
@@ -329,7 +330,7 @@ namespace Eron.web.Areas.admin.Models
         {
             return new MenuCreate()
             {
-                Id = encode.GetString(model.Id),
+                Id = model.Id,
                 IsSubMenu = model.MenuId == null,
                 MenuId = encode.GetString(model.MenuId.Value),
                 Name = model.Name,
@@ -345,7 +346,7 @@ namespace Eron.web.Areas.admin.Models
 #endif
             return new MenuList()
             {
-                Id = encode.GetString(model.Id),
+                Id = model.Id,
                 IsSubMenu = model.MenuId == null,
                 MenuId = encode.GetString(model.MenuId.Value),
                 Name = model.Name,

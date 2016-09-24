@@ -9,7 +9,7 @@ namespace Eron.web.Areas.admin.Models.Content
 {
     public class ContentListView
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         [Display(Name = "Title",ResourceType = typeof(GlobalResources))]
         public string Title { get; set; }

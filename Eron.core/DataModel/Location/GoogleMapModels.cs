@@ -1,6 +1,8 @@
-﻿namespace Eron.core.DataModel.Location
+﻿using System;
+
+namespace Eron.core.DataModel.Location
 {
-    public class GoogleMap:EntityBase
+    public class GoogleMap:EntityBase<Guid>
     {
         public decimal Lat { get; set; }
 

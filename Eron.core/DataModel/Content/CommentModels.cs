@@ -4,7 +4,7 @@ using Eron.core.ValueObjects;
 
 namespace Eron.core.DataModel.Content
 {
-    public class CommentContent:ReportingBase
+    public class CommentContent:ReportingBase<Guid>
     {
         public Guid ContentId { get; set; }
 

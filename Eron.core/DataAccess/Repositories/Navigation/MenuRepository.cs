@@ -6,7 +6,7 @@ using Eron.core.DataModel.Navigation;
 
 namespace Eron.core.DataAccess.Repositories.Navigation
 {
-    public class MenuRepository :Repository<Menu>
+    public class MenuRepository :Repository<Menu,int>
     {
         public MenuRepository(ApplicationDbContext context, Encode.Encode encode) : base(context, encode)
         {

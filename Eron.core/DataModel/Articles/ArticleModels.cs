@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Eron.core.DataModel.Articles
 {
-    public class Article : VoteBase
+    public class Article : VoteBase<long>
     {
 
         [Required(ErrorMessage = "*")] 

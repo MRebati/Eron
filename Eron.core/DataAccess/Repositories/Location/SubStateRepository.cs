@@ -6,7 +6,7 @@ using Eron.core.DataModel.Location;
 
 namespace Eron.core.DataAccess.Repositories.Location
 {
-    public class SubStateRepository:Repository<SubState>
+    public class SubStateRepository:Repository<SubState,long>
     {
         public SubStateRepository(ApplicationDbContext context, Encode.Encode encode) : base(context, encode)
         {

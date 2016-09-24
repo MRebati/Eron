@@ -9,7 +9,7 @@ namespace Eron.web.Areas.admin.Models.Language
 {
     public class LanguageEdit
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "LocalName", ResourceType = typeof(GlobalResources))]
         public string LocalName { get; set; }

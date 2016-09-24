@@ -10,7 +10,7 @@ namespace Eron.web.Areas.admin.Models.Category
     public class CategoryEdit
     {
         
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         [Display(Name = "Name",ResourceType = typeof(GlobalResources))]
         public string Name { get; set; }

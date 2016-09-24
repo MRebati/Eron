@@ -11,7 +11,7 @@ namespace Eron.web.Areas.admin.Models.Navigation
     public class MenuCreate
     {
         [Display(Name = "Id",ResourceType = typeof(GlobalResources))]
-        public string Id { get; set; }
+        public int? Id { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(GlobalResources), ErrorMessageResourceName = "Required")]
         [Display(Name = "Name", ResourceType = typeof(GlobalResources))]

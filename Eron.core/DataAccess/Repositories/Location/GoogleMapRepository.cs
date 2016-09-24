@@ -6,7 +6,7 @@ using Eron.core.DataModel.Location;
 
 namespace Eron.core.DataAccess.Repositories.Location
 {
-    public class GoogleMapRepository:Repository<GoogleMap>
+    public class GoogleMapRepository:Repository<GoogleMap,Guid>
     {
         public GoogleMapRepository(ApplicationDbContext context, Encode.Encode encode) : base(context, encode)
         {

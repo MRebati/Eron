@@ -52,7 +52,7 @@
                                             @Html.DisplayFor(modelItem => item.State)
                                         </td>
                                         <td>
-                                            @Html.OptionBox("ContentCategory", "admin", item.Id)
+                                            @Html.OptionBox("ContentCategory", "admin", item.Id.ToString())
                                         </td>
                                     </tr>
                                 }

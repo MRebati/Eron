@@ -52,7 +52,7 @@ namespace Eron.web.Areas.admin.Controllers
             return PartialView(model);
         }
 
-        public ActionResult Edit(string id)
+        public ActionResult Edit(long id)
         {
             var model = ModelFactory.EditCreate(Service.Categories.Get(id));
             return PartialView(model);
@@ -81,17 +81,17 @@ namespace Eron.web.Areas.admin.Controllers
             return PartialView(model);
         }
 
-        public ActionResult Delete(string id)
+        public ActionResult Delete(long? id)
         {
             ViewBag.Title = GlobalResources.DeleteCategory;
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var model = ModelFactory.ListCreate(Service.Categories.Get(id));
+            var model = ModelFactory.ListCreate(Service.Categories.Get(id.Value));
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             return PartialView(model);
         }
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(long id)
         {
             var model = Service.Categories.Get(id);
             if (!string.IsNullOrEmpty(model.ImageUrl))

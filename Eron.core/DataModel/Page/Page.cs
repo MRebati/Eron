@@ -4,7 +4,7 @@ using Eron.core.ValueObjects;
 
 namespace Eron.core.DataModel.Page
 {
-    public class Page:ReportingBase,IInsight
+    public class Page:ReportingBase<int>,IInsight
     {
         public string Title { get; set; }
 

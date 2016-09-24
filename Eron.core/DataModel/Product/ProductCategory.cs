@@ -2,7 +2,7 @@
 
 namespace Eron.core.DataModel.Product
 {
-    public class ProductCategory
+    public class ProductCategory:EntityBase<long>
     {
         public string Name { get; set; }
 

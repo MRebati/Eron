@@ -249,6 +249,7 @@
     <Compile Include="DataModel\Product\Product.cs" />
     <Compile Include="DataModel\Product\ProductCategory.cs" />
     <Compile Include="DataModel\Product\ProductProperty.cs" />
+    <Compile Include="DataModel\Registry\ContentRegistry.cs" />
     <Compile Include="DataModel\ReportingBase.cs" />
     <Compile Include="DataModel\Search\TagModels.cs" />
     <Compile Include="DataModel\VoteBase.cs" />
@@ -294,6 +295,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IRepositoryService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
+    <Compile Include="ValueObjects\ContentRegistryType.cs" />
     <Compile Include="ValueObjects\IInsight.cs" />
     <Compile Include="ValueObjects\MenuType.cs" />
   </ItemGroup>

@@ -71,11 +71,11 @@ namespace Eron.web.Areas.admin.Controllers
             return PartialView(model);
         }
 
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if(id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var model = Service.Contents.Get(id);
+            var model = Service.Contents.Get(id.Value);
             if(model == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             var content = ModelFactory.EditCreate(model);
@@ -126,12 +126,11 @@ namespace Eron.web.Areas.admin.Controllers
             return PartialView(model);
         }
 
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
-            if(String.IsNullOrEmpty(id))
+            if(id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var code = Encode.GetGuid(id);
-            var content = Service.Contents.GetIQueryable().Include(x => x.Category).FirstOrDefault(x => x.Id == code);
+            var content = Service.Contents.GetIQueryable().Include(x => x.Category).FirstOrDefault(x => x.Id == id);
             var model = ModelFactory.Create(content);
             if(model== null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
@@ -139,7 +138,7 @@ namespace Eron.web.Areas.admin.Controllers
         }
 
         [HttpPost,ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             var model = Service.Contents.Get(id);
             if (!String.IsNullOrEmpty(model.ImageUrl))

@@ -6,7 +6,7 @@ using Eron.core.ValueObjects;
 
 namespace Eron.core.DataModel.Content
 {
-    public class Category:ReportingBase,IInsight
+    public class Category:ReportingBase<long>,IInsight
     {
         public string Name { get; set; }
 

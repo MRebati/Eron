@@ -4,7 +4,7 @@ using Eron.core.App_GlobalResources;
 
 namespace Eron.core.DataModel
 {
-    public class ReportingBase:EntityBase
+    public class ReportingBase<TKey>:EntityBase<TKey>
     {
         [Display(Name = "UpdateTime",ResourceType = typeof(GlobalResources))]
         public DateTime ModifiedTime { get; set; }

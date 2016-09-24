@@ -6,7 +6,7 @@ using Eron.core.DataModel.Articles;
 
 namespace Eron.core.DataAccess.Repositories.Articles
 {
-    public class CommentRepository:Repository<CommentArticle>
+    public class CommentRepository:Repository<CommentArticle,Guid>
     {
         public CommentRepository(ApplicationDbContext context, Encode.Encode encode) : base(context, encode) { }
     }

@@ -9,7 +9,7 @@ namespace Eron.web.Areas.admin.Models.Page
 {
     public class PageList
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name ="Title",ResourceType = typeof(GlobalResources))]
         public string Title { get; set; }

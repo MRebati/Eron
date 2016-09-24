@@ -9,7 +9,7 @@ namespace Eron.web.Areas.admin.Models.Category
 {
     public class CategoryList
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         [Display(Name = "Name", ResourceType = typeof(GlobalResources))]
         public string Name { get; set; }

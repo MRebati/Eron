@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Eron.core.DataModel.Navigation
 {
-    public class Footer : EntityBase
+    public class Footer : EntityBase<int>
     {
         public bool IsParent { get; set; }
 

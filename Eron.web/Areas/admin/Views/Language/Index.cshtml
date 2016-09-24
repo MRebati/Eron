@@ -52,7 +52,7 @@
                                             @Html.DisplayFor(modelItem => item.LanguageCode)
                                         </td>
                                         <td>
-                                            @Html.OptionBox("Language", "admin", item.Id)
+                                            @Html.OptionBox("Language", "admin", item.Id.ToString())
                                         </td>
                                     </tr>
                                 }

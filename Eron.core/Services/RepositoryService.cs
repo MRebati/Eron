@@ -24,22 +24,22 @@ namespace Eron.core.Services
         private ApplicationDbContext _context;
         private IdentityDbContext<ApplicationUser> user;
         private Encode.Encode _encode;
-        private Repository<Article> _article;
-        private Repository<Content> _content;
-        private Repository<ArticleCategory> _articleCategory;
-        private Repository<Category> _contentCategory;
-        private Repository<LikeArticle> _articleLike;
-        private Repository<LikeContent> _contentLike;
-        private Repository<CommentArticle> _articleComment;
-        private Repository<CommentContent> _contentComment;
-        private Repository<Tag> _tag;
-        private Repository<State> _state;
-        private Repository<SubState> _subState;
-        private Repository<GoogleMap> _map;
-        private Repository<Language> _language;
-        private Repository<Page> _page;
-        private Repository<Menu> _menu;
-        private Repository<Footer> _footer;  
+        private Repository<Article,long> _article;
+        private Repository<Content,long> _content;
+        private Repository<ArticleCategory,long> _articleCategory;
+        private Repository<Category,long> _contentCategory;
+        private Repository<LikeArticle,Guid> _articleLike;
+        private Repository<LikeContent, Guid> _contentLike;
+        private Repository<CommentArticle, Guid> _articleComment;
+        private Repository<CommentContent, Guid> _contentComment;
+        private Repository<Tag,long> _tag;
+        private Repository<State, long> _state;
+        private Repository<SubState, long> _subState;
+        private Repository<GoogleMap, Guid> _map;
+        private Repository<Language, int> _language;
+        private Repository<Page, int> _page;
+        private Repository<Menu, int> _menu;
+        private Repository<Footer, int> _footer;  
 
         public RepositoryService(Encode.Encode encode)
         {
@@ -48,7 +48,7 @@ namespace Eron.core.Services
             this._encode = encode;
         }
 
-        public Repository<Article> ArticleContents
+        public Repository<Article,long> ArticleContents
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<Content> Contents
+        public Repository<Content,long> Contents
         {
             get
             {
@@ -68,7 +68,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<Category> Categories
+        public Repository<Category,long> Categories
         {
             get
             {
@@ -78,7 +78,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<ArticleCategory> ArticleCategories
+        public Repository<ArticleCategory, long> ArticleCategories
         {
             get
             {
@@ -88,7 +88,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<CommentArticle> ArticleComments
+        public Repository<CommentArticle, Guid> ArticleComments
         {
             get
             {
@@ -98,7 +98,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<LikeArticle> ArticleLikes
+        public Repository<LikeArticle, Guid> ArticleLikes
         {
             get
             {
@@ -108,7 +108,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<Tag> Tags
+        public Repository<Tag,long> Tags
         {
             get
             {
@@ -118,7 +118,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<GoogleMap> Maps
+        public Repository<GoogleMap, Guid> Maps
         {
             get
             {
@@ -128,7 +128,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<State> States
+        public Repository<State, long> States
         {
             get
             {
@@ -138,7 +138,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<SubState> SubStates
+        public Repository<SubState, long> SubStates
         {
             get
             {
@@ -148,7 +148,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<Language> Languages
+        public Repository<Language,int> Languages
         {
             get
             {
@@ -160,7 +160,7 @@ namespace Eron.core.Services
 
         public IdentityDbContext<ApplicationUser> User { get { return user; } }
 
-        public Repository<Page> Pages
+        public Repository<Page,int> Pages
         {
             get
             {
@@ -170,7 +170,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<Menu> Menues
+        public Repository<Menu,int> Menues
         {
             get
             {
@@ -180,7 +180,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<Footer> Footers
+        public Repository<Footer,int> Footers
         {
             get
             {
@@ -190,7 +190,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<CommentContent> ContentComments
+        public Repository<CommentContent,Guid> ContentComments
         {
             get
             {
@@ -200,7 +200,7 @@ namespace Eron.core.Services
             }
         }
 
-        public Repository<LikeContent> ContentLikes
+        public Repository<LikeContent,Guid> ContentLikes
         {
             get
             {

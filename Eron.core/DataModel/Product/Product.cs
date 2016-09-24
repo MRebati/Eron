@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Eron.core.DataModel.Product
 {
-    public class Product:ReportingBase
+    public class Product:ReportingBase<Guid>
     {
         public string Name { get; set; }
 
