@@ -18,6 +18,7 @@ using Eron.web.Areas.admin.Models.Content;
 using Eron.web.Areas.admin.Models.Language;
 using Eron.web.Areas.admin.Models.Navigation;
 using Eron.web.Areas.admin.Models.Page;
+using Eron.web.Areas.admin.Models.Slider;
 using Microsoft.AspNet.Identity;
 
 namespace Eron.web.Areas.admin.Models
@@ -76,7 +77,7 @@ namespace Eron.web.Areas.admin.Models
                 Title = model.Title,
                 Summery = model.Summery,
                 Author = HttpContext.Current.User.Identity.GetUserId(),
-                CategoryId = encode.GetGuid(model.CategoryId),
+                CategoryId = model.CategoryId,
                 ContentData = model.Content,
                 CreateTime = DateTime.Now,
                 ModifiedTime = DateTime.Now,
@@ -101,7 +102,7 @@ namespace Eron.web.Areas.admin.Models
             {
                 Title = model.Title,
                 Summery = model.Summery,
-                CategoryId = encode.GetString(model.CategoryId),
+                CategoryId = model.CategoryId,
                 Content = model.ContentData,
                 CreateTime = model.CreateTime,
                 ModifiedTime = DateTime.Now,
@@ -129,7 +130,7 @@ namespace Eron.web.Areas.admin.Models
                 Title = model.Title,
                 Summery = model.Summery,
                 Author = HttpContext.Current.User.Identity.GetUserId(),
-                CategoryId = encode.GetGuid(model.CategoryId),
+                CategoryId = model.CategoryId,
                 ContentData = model.Content,
                 CreateTime = model.CreateTime,
                 ModifiedTime = DateTime.Now,
@@ -353,6 +354,42 @@ namespace Eron.web.Areas.admin.Models
                 Target = model.Target == "_self" ? GlobalResources.CurrentPage : GlobalResources.NewPage,
                 Url = model.Url,
                 MenuName = service.Menues.Get(model.MenuId.Value).Name
+            };
+        }
+
+        public core.DataModel.Utilities.Slider Create(SliderViewModel model)
+        {
+            return new core.DataModel.Utilities.Slider()
+            {
+                BackgroundUrl = model.BackgroundUrl,
+                Endable = model.Endable,
+                EndDate = model.Endable?persianCalendar.GregorianDateTime(model.EndDate): new DateTime(),
+                ShowCaption = model.ShowCaption,
+                ShowTitle = model.ShowTitle,
+                StartDate = persianCalendar.GregorianDateTime(model.StartDate),
+                Title = model.Title,
+                Name = model.Name,
+                LinkName = model.LinkName,
+                LinkUrl = model.LinkUrl,
+                Id = model.Id?? new long()
+            };
+        }
+
+        public SliderViewModel ListCreate(core.DataModel.Utilities.Slider model)
+        {
+            return new SliderViewModel()
+            {
+                BackgroundUrl = model.BackgroundUrl,
+                Endable = model.Endable,
+                EndDate = model.EndDate != null ? persianCalendar.PersianDateTime(model.EndDate.Value):String.Empty,
+                ShowCaption = model.ShowCaption,
+                ShowTitle = model.ShowTitle,
+                StartDate = persianCalendar.PersianDateTime(model.StartDate),
+                Title = model.Title,
+                Name = model.Name,
+                LinkName = model.LinkName,
+                LinkUrl = model.LinkUrl,
+                Id = model.Id
             };
         }
     }

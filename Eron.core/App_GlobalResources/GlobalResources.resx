@@ -480,4 +480,37 @@
   <data name="MenuType" xml:space="preserve">
     <value>نوع منو</value>
   </data>
+  <data name="AllSlides" xml:space="preserve">
+    <value>همه اسلاید ها</value>
+  </data>
+  <data name="CreateSlide" xml:space="preserve">
+    <value>ثبت اسلاید</value>
+  </data>
+  <data name="DeleteSlide" xml:space="preserve">
+    <value>حذف اسلاید</value>
+  </data>
+  <data name="EditSlide" xml:space="preserve">
+    <value>ویرایش اسلاید</value>
+  </data>
+  <data name="Endable" xml:space="preserve">
+    <value>اتمام پذیر</value>
+  </data>
+  <data name="LinkName" xml:space="preserve">
+    <value>نام لینک</value>
+  </data>
+  <data name="LinkUrl" xml:space="preserve">
+    <value>آدرس لینک</value>
+  </data>
+  <data name="ShowCaption" xml:space="preserve">
+    <value>نمایش توضیحات</value>
+  </data>
+  <data name="ShowTitle" xml:space="preserve">
+    <value>نمایش عنوان</value>
+  </data>
+  <data name="Slides" xml:space="preserve">
+    <value>اسلاید ها</value>
+  </data>
+  <data name="Utilities" xml:space="preserve">
+    <value>افزونه ها</value>
+  </data>
 </root>

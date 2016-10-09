@@ -119,14 +119,14 @@
         });
     }
 
-    function blacknav()
-    {
+    function blacknav() {
         $("#mainnav").removeClass("white-bg");
         $(".wrapper-content").addClass('animated').removeClass('fadeIn').removeClass('fade').addClass('fadeInLeft');
         checkibox();
     }
 
     function whitenav() {
+        fixheight();
         $("#mainnav").addClass("white-bg");
         $(".wrapper-content").addClass('animated').removeClass('fadeIn').removeClass('fade').addClass('fadeInLeft');
         checkibox();

@@ -11,6 +11,7 @@ using Eron.core.DataModel.Location;
 using Eron.core.DataModel.Navigation;
 using Eron.core.DataModel.Page;
 using Eron.core.DataModel.Search;
+using Eron.core.DataModel.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -62,13 +63,13 @@ namespace Eron.core.DataAccess
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
         public DbSet<CommentArticle> ArticleComments { get; set; }
         public DbSet<LikeArticle> ArticleLikes { get; set; }
-        
+
         //Entities.Content
         public DbSet<Content> Content { get; set; }
         public DbSet<Category> ContentCategories { get; set; }
         public DbSet<CommentContent> ContentComments { get; set; }
         public DbSet<LikeContent> ContentLikes { get; set; }
-        
+
         //Entites.Search
         public DbSet<Tag> Tags { get; set; }
 
@@ -85,5 +86,9 @@ namespace Eron.core.DataAccess
         public DbSet<Menu> Menus { get; set; }
 
         public DbSet<Footer> Footers { get; set; }
+
+        //Utilities
+        public DbSet<Slider> Sliders { get; set; }
+        public DbSet<SliderCategory> SliderCategories { get; set; }
     }
 }

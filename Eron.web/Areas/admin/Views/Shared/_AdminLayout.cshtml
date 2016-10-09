@@ -13,8 +13,10 @@
         @RenderPage("side/_sidebar.cshtml")
         <div id="page-wrapper" class="gray-bg">
             @RenderPage("header/_haeder.cshtml")
-            <div id="mainpanel">
-                @RenderBody()
+            <div class="row">
+                <div id="mainpanel" class="col-md-12">
+                    @RenderBody()
+                </div>
             </div>
             @RenderPage("footer/_footer.cshtml")
         </div>

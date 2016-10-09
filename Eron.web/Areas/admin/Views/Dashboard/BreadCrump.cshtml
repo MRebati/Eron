@@ -1,9 +1,16 @@
 ﻿<div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>@ViewBag.Title</h2>
+        @if (ViewBag.Title != null)
+        {
+            <h2>@ViewBag.Title</h2>
+        }
+        @if(ViewBag.PageTitle!=null)
+        {
+            <h2>@ViewBag.PageTitle</h2>
+        }
         <ol class="breadcrumb">
             <li>
-                <a href="@ViewBag.Url" data-ajax-update="#mainpanel" data-ajax-mode="replace" data-ajax="true" data-ajax-success="@ViewBag.Nav" >@ViewBag.Parent</a>
+                <a href="@ViewBag.Url" data-ajax-update="#mainpanel" data-ajax-mode="replace" data-ajax="true" data-ajax-success="@ViewBag.Nav">@ViewBag.Parent</a>
             </li>
             <li>
                 <a>@ViewBag.Mid</a>

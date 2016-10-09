@@ -12,6 +12,7 @@ using Eron.core.DataModel.Location;
 using Eron.core.DataModel.Navigation;
 using Eron.core.DataModel.Page;
 using Eron.core.DataModel.Search;
+using Eron.core.DataModel.Utilities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Eron.core.Services
@@ -117,5 +118,10 @@ namespace Eron.core.Services
         /// This Repository will return CRUD Action related to Footers.
         /// </summary>
         Repository<Footer,int> Footers { get; } 
+
+        /// <summary>
+        /// This Repository will return CRUD Action related to Sliders.
+        /// </summary>
+        Repository<Slider,long> Sliders { get; }
     }
 }

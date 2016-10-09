@@ -8270,6 +8270,8 @@ body.md-skin {
 
 .file-upload-text {
     width: calc(100% - 110px) !important;
+    min-width: calc(100% - 110px) !important;
+    width: calc(100% - 110px) !important;
     float: right !important;
 }
 
@@ -8300,4 +8302,8 @@ body.md-skin {
 
 .k-textbox:focus {
     border-color: #1ab394 !important;
+}
+
+#mainpanel {
+    padding-bottom: 30px;
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -50,6 +51,29 @@ namespace Eron.web.Areas.admin.Controllers
             ViewBag.Language =
                 new SelectList(Service.Languages.Get().Select(x => ModelFactory.SelectList(x.LocalName, x.LanguageCode)),"Id","Name",model.Language);
             ViewBag.Title = GlobalResources.CreatePage;
+            return PartialView(model);
+        }
+
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if(id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var page = await Service.Pages.GetAsync(id.Value);
+            if(page == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            var model = ModelFactory.ListCreate(page);
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(PageCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+                var page = ModelFactory.Create(model);
+                await Service.Pages.UpdateAsync(page);
+                return RedirectToAction("Index");
+            }
             return PartialView(model);
         }
     }

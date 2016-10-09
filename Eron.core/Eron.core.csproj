@@ -230,6 +230,7 @@
       <DependentUpon>GlobalResources.fa.resx</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\Context.cs" />
+    <Compile Include="DataAccess\Repositories\Utilities\SliderRepository.cs" />
     <Compile Include="DataModel\Articles\CategoryModels.cs" />
     <Compile Include="DataModel\Articles\CommentModels.cs" />
     <Compile Include="DataModel\Articles\ArticleModels.cs" />
@@ -252,6 +253,8 @@
     <Compile Include="DataModel\Registry\ContentRegistry.cs" />
     <Compile Include="DataModel\ReportingBase.cs" />
     <Compile Include="DataModel\Search\TagModels.cs" />
+    <Compile Include="DataModel\Utilities\Slider.cs" />
+    <Compile Include="DataModel\Utilities\SliderCategory.cs" />
     <Compile Include="DataModel\VoteBase.cs" />
     <Compile Include="DataAccess\Repositories\Articles\CategoryRepository.cs" />
     <Compile Include="DataAccess\Repositories\Articles\CommentRepository.cs" />
@@ -273,21 +276,25 @@
     <Compile Include="DataAccess\Repositories\Search\TagRepository.cs" />
     <Compile Include="Encode\Encode.cs" />
     <Compile Include="Encode\IEncode.cs" />
-    <Compile Include="Migrations\201607111603069_conf-init.cs" />
-    <Compile Include="Migrations\201607111603069_conf-init.Designer.cs">
-      <DependentUpon>201607111603069_conf-init.cs</DependentUpon>
+    <Compile Include="Migrations\201610060908230_conf-reset-all.cs" />
+    <Compile Include="Migrations\201610060908230_conf-reset-all.Designer.cs">
+      <DependentUpon>201610060908230_conf-reset-all.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607201524234_conf-add-navigation.cs" />
-    <Compile Include="Migrations\201607201524234_conf-add-navigation.Designer.cs">
-      <DependentUpon>201607201524234_conf-add-navigation.cs</DependentUpon>
+    <Compile Include="Migrations\201610060910228_conf-init.cs" />
+    <Compile Include="Migrations\201610060910228_conf-init.Designer.cs">
+      <DependentUpon>201610060910228_conf-init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608040851329_conf-add-insight.cs" />
-    <Compile Include="Migrations\201608040851329_conf-add-insight.Designer.cs">
-      <DependentUpon>201608040851329_conf-add-insight.cs</DependentUpon>
+    <Compile Include="Migrations\201610060912042_conf-votebase-change-1.cs" />
+    <Compile Include="Migrations\201610060912042_conf-votebase-change-1.Designer.cs">
+      <DependentUpon>201610060912042_conf-votebase-change-1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608041329352_conf-change-menu-1.cs" />
-    <Compile Include="Migrations\201608041329352_conf-change-menu-1.Designer.cs">
-      <DependentUpon>201608041329352_conf-change-menu-1.cs</DependentUpon>
+    <Compile Include="Migrations\201610061640402_conf-slide-endtime-change-1.cs" />
+    <Compile Include="Migrations\201610061640402_conf-slide-endtime-change-1.Designer.cs">
+      <DependentUpon>201610061640402_conf-slide-endtime-change-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610091859068_conf-sliderCategory-init.cs" />
+    <Compile Include="Migrations\201610091859068_conf-sliderCategory-init.Designer.cs">
+      <DependentUpon>201610091859068_conf-sliderCategory-init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PersianDateTime\IPersian.cs" />
@@ -301,6 +308,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataAccess\Repositories\File\" />
+    <Folder Include="DataAccess\Repositories\Registry\" />
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
@@ -323,17 +331,20 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607111603069_conf-init.resx">
-      <DependentUpon>201607111603069_conf-init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610060908230_conf-reset-all.resx">
+      <DependentUpon>201610060908230_conf-reset-all.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607201524234_conf-add-navigation.resx">
-      <DependentUpon>201607201524234_conf-add-navigation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610060910228_conf-init.resx">
+      <DependentUpon>201610060910228_conf-init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608040851329_conf-add-insight.resx">
-      <DependentUpon>201608040851329_conf-add-insight.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610060912042_conf-votebase-change-1.resx">
+      <DependentUpon>201610060912042_conf-votebase-change-1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608041329352_conf-change-menu-1.resx">
-      <DependentUpon>201608041329352_conf-change-menu-1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610061640402_conf-slide-endtime-change-1.resx">
+      <DependentUpon>201610061640402_conf-slide-endtime-change-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610091859068_conf-sliderCategory-init.resx">
+      <DependentUpon>201610091859068_conf-sliderCategory-init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

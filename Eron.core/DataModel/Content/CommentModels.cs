@@ -6,7 +6,7 @@ namespace Eron.core.DataModel.Content
 {
     public class CommentContent:ReportingBase<Guid>
     {
-        public Guid ContentId { get; set; }
+        public long ContentId { get; set; }
 
         public string UserName { get; set; }
 

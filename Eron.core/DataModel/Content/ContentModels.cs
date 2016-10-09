@@ -31,7 +31,7 @@ namespace Eron.core.DataModel.Content
         public string Keywords { get; set; }
 
         [Display(Name = "مجموعه")]
-        public Guid CategoryId { get; set; }
+        public long CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }

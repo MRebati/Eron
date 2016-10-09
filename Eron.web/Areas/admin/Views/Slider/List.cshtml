@@ -1,0 +1,80 @@
+﻿@using Eron.web.Helpers
+@model IEnumerable<Eron.web.Areas.admin.Models.Slider.SliderViewModel>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BackgroundUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowCaption)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowTitle)
+            </th>
+            <th></th>
+        </tr>
+    </thead><tbody>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BackgroundUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowCaption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowTitle)
+            </td>
+            <td>
+                @Html.ModalOptionBox("Slider","admin",item.Id.ToString())
+            </td>
+        </tr>
+    }
+</tbody>
+</table>

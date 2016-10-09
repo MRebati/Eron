@@ -6394,7 +6394,7 @@ button.close {
     display: none;
     max-width: 276px;
     padding: 1px;
-    font-family: "BYekan",IRANSans-web-light,Yekan;
+    font-family: IRANSans-web-light, Yekan, BYekan;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.42857143;

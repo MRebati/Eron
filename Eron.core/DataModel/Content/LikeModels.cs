@@ -5,7 +5,7 @@ namespace Eron.core.DataModel.Content
     public class LikeContent:EntityBase<Guid>
     {
 
-        public Guid ContentId { get; set; }
+        public long ContentId { get; set; }
 
         public string UserId { get; set; }
 

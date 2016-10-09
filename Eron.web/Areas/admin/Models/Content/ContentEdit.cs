@@ -29,7 +29,10 @@ namespace Eron.web.Areas.admin.Models.Content
         public string Content { get; set; }
 
         [Display(Name = "Category", ResourceType = typeof(GlobalResources))]
-        public string CategoryId { get; set; }
+        public long CategoryId { get; set; }
+
+        [Display(Name="Category",ResourceType = typeof(GlobalResources))]
+        public string CategoryName { get; set; }
 
         [Display(Name = "PublishStartTime", ResourceType = typeof(GlobalResources))]
         public string PublishStartTime { get; set; }

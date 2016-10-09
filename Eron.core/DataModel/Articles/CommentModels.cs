@@ -13,7 +13,7 @@ namespace Eron.core.DataModel.Articles
 
         public int BadAnswer { get; set; }
 
-        public Guid ArticleId { get; set; }
+        public long ArticleId { get; set; }
 
         [ForeignKey("ArticleId")]
         public Article Article { get; set; }

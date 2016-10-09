@@ -124,6 +124,15 @@ namespace Eron.core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to همه اسلاید ها.
+        /// </summary>
+        public static string AllSlides {
+            get {
+                return ResourceManager.GetString("AllSlides", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to نویسنده.
         /// </summary>
         public static string Author {
@@ -295,6 +304,15 @@ namespace Eron.core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ثبت اسلاید.
+        /// </summary>
+        public static string CreateSlide {
+            get {
+                return ResourceManager.GetString("CreateSlide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to تاریخ ثبت.
         /// </summary>
         public static string CreateTime {
@@ -385,6 +403,15 @@ namespace Eron.core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to حذف اسلاید.
+        /// </summary>
+        public static string DeleteSlide {
+            get {
+                return ResourceManager.GetString("DeleteSlide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to توضیحات.
         /// </summary>
         public static string Description {
@@ -457,11 +484,29 @@ namespace Eron.core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ویرایش اسلاید.
+        /// </summary>
+        public static string EditSlide {
+            get {
+                return ResourceManager.GetString("EditSlide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ایمیل.
         /// </summary>
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اتمام پذیر.
+        /// </summary>
+        public static string Endable {
+            get {
+                return ResourceManager.GetString("Endable", resourceCulture);
             }
         }
         
@@ -633,6 +678,24 @@ namespace Eron.core.App_GlobalResources {
         public static string Lat {
             get {
                 return ResourceManager.GetString("Lat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام لینک.
+        /// </summary>
+        public static string LinkName {
+            get {
+                return ResourceManager.GetString("LinkName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آدرس لینک.
+        /// </summary>
+        public static string LinkUrl {
+            get {
+                return ResourceManager.GetString("LinkUrl", resourceCulture);
             }
         }
         
@@ -952,11 +1015,38 @@ namespace Eron.core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نمایش توضیحات.
+        /// </summary>
+        public static string ShowCaption {
+            get {
+                return ResourceManager.GetString("ShowCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to نمایش تاریخ و ساعت.
         /// </summary>
         public static string ShowDateTime {
             get {
                 return ResourceManager.GetString("ShowDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نمایش عنوان.
+        /// </summary>
+        public static string ShowTitle {
+            get {
+                return ResourceManager.GetString("ShowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اسلاید ها.
+        /// </summary>
+        public static string Slides {
+            get {
+                return ResourceManager.GetString("Slides", resourceCulture);
             }
         }
         
@@ -1128,6 +1218,15 @@ namespace Eron.core.App_GlobalResources {
         public static string User {
             get {
                 return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to افزونه ها.
+        /// </summary>
+        public static string Utilities {
+            get {
+                return ResourceManager.GetString("Utilities", resourceCulture);
             }
         }
         

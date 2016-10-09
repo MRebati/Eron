@@ -32,7 +32,7 @@ namespace Eron.core.DataModel.Articles
         public string Keywords { get; set; }
 
         [Display(Name = "مجموعه")]
-        public Guid CategoryId { get; set; }
+        public long CategoryId { get; set; }
  
         [ForeignKey("CategoryId")]
         public ArticleCategory Category { get; set; }

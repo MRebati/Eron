@@ -1,0 +1,33 @@
+﻿@using Eron.core.App_GlobalResources
+@using Eron.web.Helpers
+
+@{
+    ViewBag.Title = GlobalResources.AllSlides;
+    UICulture = Culture = "fa";
+}
+@Html.Action("BreadCrump", "Dashboard", new { title = ViewBag.Title, parent = GlobalResources.Utilities, mid = GlobalResources.Slides, last = GlobalResources.AllSlides, url = Url.Action("Index", "Menu"), nav = true })
+
+<div class="wrapper wrapper-content fade">
+    <div class="">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>@GlobalResources.AllSlides</h5>
+                    </div>
+                    <div class="ibox-content no-padding">
+                        @Html.Action("List")
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@Html.ModalHelper(ModalType.EditModal, Size.lg)
+@Html.ModalHelper(ModalType.DeleteModal, Size.md)
+@Html.ModalHelper(ModalType.DetailsModal, Size.md)

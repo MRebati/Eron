@@ -69,7 +69,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                @Html.DropDownListFor(model => model.CategoryId,null, Model.CategoryId, new {@class = "form-control"})
+                                                @Html.DropDownListFor(model => model.CategoryId,null, GlobalResources.ChooseCategory, new {@class = "form-control"})
                                                 @Html.ValidationMessageFor(model => model.CategoryId, "", new {@class = "text-danger"})
                                             </div>
                                         </div>

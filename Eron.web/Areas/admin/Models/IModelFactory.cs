@@ -12,6 +12,7 @@ using Eron.web.Areas.admin.Models.Content;
 using Eron.web.Areas.admin.Models.Language;
 using Eron.web.Areas.admin.Models.Navigation;
 using Eron.web.Areas.admin.Models.Page;
+using Eron.web.Areas.admin.Models.Slider;
 
 namespace Eron.web.Areas.admin.Models
 {
@@ -61,6 +62,10 @@ namespace Eron.web.Areas.admin.Models
         Menu Create(MenuCreate model);
         MenuCreate EditCreate(Menu model);
         MenuList ListCreate(Menu model);
+
+        //Slider
+        core.DataModel.Utilities.Slider Create(SliderViewModel model);
+        SliderViewModel ListCreate(core.DataModel.Utilities.Slider model);
 
     }
 }

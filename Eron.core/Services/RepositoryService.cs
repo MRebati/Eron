@@ -9,12 +9,14 @@ using Eron.core.DataAccess.Repositories.Location;
 using Eron.core.DataAccess.Repositories.Navigation;
 using Eron.core.DataAccess.Repositories.Page;
 using Eron.core.DataAccess.Repositories.Search;
+using Eron.core.DataAccess.Repositories.Utilities;
 using Eron.core.DataModel.Articles;
 using Eron.core.DataModel.Content;
 using Eron.core.DataModel.Location;
 using Eron.core.DataModel.Navigation;
 using Eron.core.DataModel.Page;
 using Eron.core.DataModel.Search;
+using Eron.core.DataModel.Utilities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Eron.core.Services
@@ -39,7 +41,8 @@ namespace Eron.core.Services
         private Repository<Language, int> _language;
         private Repository<Page, int> _page;
         private Repository<Menu, int> _menu;
-        private Repository<Footer, int> _footer;  
+        private Repository<Footer, int> _footer;
+        private Repository<Slider, long> _slider;
 
         public RepositoryService(Encode.Encode encode)
         {
@@ -187,6 +190,16 @@ namespace Eron.core.Services
                 if(_footer == null)
                     _footer = new FooterRepository(_context,_encode);
                 return _footer;
+            }
+        }
+
+        public Repository<Slider, long> Sliders
+        {
+            get
+            {
+                if(_slider == null)
+                    _slider = new SliderRepository(_context,_encode);
+                return _slider;
             }
         }
 

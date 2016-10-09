@@ -45,8 +45,20 @@
             <li>
                 <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">محصولات</span>  </a>
             </li>
-            <li>
+            @*<li>
                 <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">افزونه ها</span></a>
+            </li>*@
+            <li>
+                <a href="#"><i class="fa fa-puzzle-piece"></i> <span class="nav-label">@GlobalResources.Utilities</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li>
+                        <a href="#"><span class="nav-label">@GlobalResources.Slides</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level collapse">
+                            <li>@Ajax.DefaultLink(GlobalResources.AllSlides, "Index", "Slider", true)</li>
+                            <li>@Ajax.DefaultLink(GlobalResources.CreateSlide, "Create", "Slider", true)</li>
+                        </ul>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="dashboard_5.html#"><i class="fa fa-edit"></i> <span class="nav-label">کاربران</span><span class="fa arrow"></span></a>
