@@ -513,4 +513,13 @@
   <data name="Utilities" xml:space="preserve">
     <value>افزونه ها</value>
   </data>
+  <data name="ChooseContent" xml:space="preserve">
+    <value>مطلبی را انتخاب نمائید</value>
+  </data>
+  <data name="ChooseLinkTypeToConnect" xml:space="preserve">
+    <value>به چه لینکی متصل شود؟</value>
+  </data>
+  <data name="ChoosePage" xml:space="preserve">
+    <value>صفحه ای را انتخاب نمائید</value>
+  </data>
 </root>

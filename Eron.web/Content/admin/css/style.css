@@ -93,7 +93,7 @@ h5 {
   display: none;
   float: right;
   font-size: 12px;
-  right: 0;
+  left: 0;
   list-style: none outside none;
   padding: 0;
   position: absolute;

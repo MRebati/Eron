@@ -187,11 +187,38 @@ namespace Eron.core.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to مطلبی را انتخاب نمائید.
+        /// </summary>
+        public static string ChooseContent {
+            get {
+                return ResourceManager.GetString("ChooseContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to زبان را انتخاب کنید.
         /// </summary>
         public static string ChooseLanguage {
             get {
                 return ResourceManager.GetString("ChooseLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to به چه لینکی متصل شود؟.
+        /// </summary>
+        public static string ChooseLinkTypeToConnect {
+            get {
+                return ResourceManager.GetString("ChooseLinkTypeToConnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to صفحه ای را انتخاب نمائید.
+        /// </summary>
+        public static string ChoosePage {
+            get {
+                return ResourceManager.GetString("ChoosePage", resourceCulture);
             }
         }
         

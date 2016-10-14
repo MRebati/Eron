@@ -10,77 +10,95 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsSubMenu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.CheckBoxAddOn("IsSubMenu", GlobalResources.SubMenu, false, CheckBoxType.primary)
+            <div class="col-md-12">
+                @*@Html.CheckBoxAddOn("IsSubMenu", GlobalResources.SubMenu, false, CheckBoxType.primary)*@
+                <input id="IsSubMenu" type="checkbox" class="js-switch" name="IsSubMenu" />
+                <label for="IsSubMenu">@GlobalResources.SubMenu</label>
                 @Html.ValidationMessageFor(model => model.IsSubMenu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-12">
+                <select id="linkSelect" class="form-control">
+                    <option value="">@GlobalResources.ChooseLinkTypeToConnect</option>
+                    <option value="1">@GlobalResources.Page</option>
+                    <option value="2">@GlobalResources.Content</option>
+                    <option value="3">@GlobalResources.Category</option>
+                    <option value="4">@GlobalResources.Gallery</option>
+                </select>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-12">
+                @Html.PlaceHolderFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        @*<div class="form-group">
+
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Target, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.CheckBoxAddOn("Target", GlobalResources.MenuTarget,false, CheckBoxType.success)
-                @Html.ValidationMessageFor(model => model.Target, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MenuId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MenuId, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-12">
+                @Html.DropDownListFor(model => model.MenuId, null, GlobalResources.ParentMenu, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MenuId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-12">
+                @Html.DropDownListFor(model => model.Page, null, GlobalResources.ChooseCategory, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-12">
+                <select id="contentSelect" class="form-control">
+                    <option value="">@GlobalResources.ChooseContent</option>
+                </select>
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Page, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Page, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-12">
+                @Html.DropDownListFor(model => model.Page, null, GlobalResources.ChoosePage, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Page, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(x => x.Target, new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                <div class="radio radio-primary">
+                    <input type="radio" name="Target" id="radio1" value="true" checked="">
+                    <label for="radio1">
+                        @GlobalResources.NewPage
+                    </label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="target" id="radio2" value="false">
+                    <label for="radio2">
+                        @GlobalResources.CurrentPage
+                    </label>
+                </div>
+                @Html.ValidationMessageFor(model => model.Target, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@GlobalResources.Create" class="btn btn-primary" />
+            <div class="text-left col-md-12">
+                <input type="submit" value="@GlobalResources.Create" class="btn btn-success btn-block" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

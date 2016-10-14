@@ -270,21 +270,17 @@ namespace Eron.web.Areas.admin.Models
             };
         }
 
+        public SelectListItem<TKey> SelectList<TKey>(string name, TKey id)
+        {
+            return new SelectListItem<TKey>()
+            {
+                Name = name,
+                Id = id
+            };
+        }
+
         //SelectList
-        public SelectListItem SelectList(string name, Guid id)
-        {
-            return new SelectListItem() { Id = encode.GetString(id), Name = name };
-        }
-
-        public SelectListItem SelectList(string name, long id)
-        {
-            return SelectList(name,id.ToString());
-        }
-
-        public SelectListItem SelectList(string name, string id)
-        {
-            return new SelectListItem() { Id = id, Name = name };
-        }
+        
 
         public PageList ListCreate(core.DataModel.Page.Page model)
         {

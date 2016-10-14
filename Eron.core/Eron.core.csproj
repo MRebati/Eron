@@ -29,6 +29,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -118,7 +119,10 @@
     <Reference Include="System.IdentityModel.Selectors" />
     <Reference Include="System.identitymodel.services" />
     <Reference Include="System.IO" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -297,6 +301,9 @@
       <DependentUpon>201610091859068_conf-sliderCategory-init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\FileHelper\FileHelper.cs" />
+    <Compile Include="Models\FileHelper\FileType.cs" />
+    <Compile Include="Models\FileHelper\IFileHelper.cs" />
     <Compile Include="PersianDateTime\IPersian.cs" />
     <Compile Include="PersianDateTime\Persian.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -305,12 +312,29 @@
     <Compile Include="ValueObjects\ContentRegistryType.cs" />
     <Compile Include="ValueObjects\IInsight.cs" />
     <Compile Include="ValueObjects\MenuType.cs" />
+    <Compile Include="ViewModels\Category\CategoryCreate.cs" />
+    <Compile Include="ViewModels\Category\CategoryEdit.cs" />
+    <Compile Include="ViewModels\Category\CategoryList.cs" />
+    <Compile Include="ViewModels\Content\ContentCreate.cs" />
+    <Compile Include="ViewModels\Content\ContentEdit.cs" />
+    <Compile Include="ViewModels\Content\ContentListView.cs" />
+    <Compile Include="ViewModels\IModelFactory.cs" />
+    <Compile Include="ViewModels\Language\LanguageCreate.cs" />
+    <Compile Include="ViewModels\Language\LanguageEdit.cs" />
+    <Compile Include="ViewModels\Language\LanguageList.cs" />
+    <Compile Include="ViewModels\ModelFactory.cs" />
+    <Compile Include="ViewModels\Navigation\FooterCreate.cs" />
+    <Compile Include="ViewModels\Navigation\FooterList.cs" />
+    <Compile Include="ViewModels\Navigation\MenuCreate.cs" />
+    <Compile Include="ViewModels\Navigation\MenuList.cs" />
+    <Compile Include="ViewModels\Page\PageCreate.cs" />
+    <Compile Include="ViewModels\Page\PageList.cs" />
+    <Compile Include="ViewModels\SelectListItem.cs" />
+    <Compile Include="ViewModels\Slider\SliderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataAccess\Repositories\File\" />
     <Folder Include="DataAccess\Repositories\Registry\" />
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

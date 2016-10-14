@@ -36,12 +36,12 @@ namespace Eron.web.Areas.admin.Controllers.Settings
         public ActionResult Create()
         {
             ViewBag.MenuId =
-                new SelectList(Service.Menues.GetIQueryable().Select(x => ModelFactory.SelectList(x.Name, x.Id)), "Id",
+                new SelectList(Service.Menues.Get().Select(x => ModelFactory.SelectList(x.Name, x.Id)), "Id",
                     "Name");
             ViewBag.Page = new SelectList(
-                Service.Pages.GetIQueryable().Select(x => ModelFactory.SelectList(x.Title, x.Id)), "Id", "Name");
+                Service.Pages.Get().Select(x => ModelFactory.SelectList(x.Title, x.Id)), "Id", "Name");
             ViewBag.Category = new SelectList(
-                Service.Categories.GetIQueryable().Select(x => ModelFactory.SelectList(x.Name, x.Id)), "Id", "Name");
+                Service.Categories.Get().Select(x => ModelFactory.SelectList(x.Name, x.Id)), "Id", "Name");
             return PartialView();
         }
 

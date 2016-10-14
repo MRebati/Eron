@@ -50,9 +50,7 @@ namespace Eron.web.Areas.admin.Models
         LanguageEdit EditCreate(core.DataModel.Location.Language model);
 
         //SelectList
-        SelectListItem SelectList(string name, Guid id);
-        SelectListItem SelectList(string name, long id);
-        SelectListItem SelectList(string name, string id);
+        SelectListItem<TKey> SelectList<TKey>(string name, TKey id);
 
         //Page
         PageList ListCreate(core.DataModel.Page.Page model);
