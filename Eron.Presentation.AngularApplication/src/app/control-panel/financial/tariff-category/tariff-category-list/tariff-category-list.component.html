@@ -1,0 +1,12 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+      لیست مجموعه ها
+    </div>
+    <div class="panel-body">
+      <div class="dd" nestable (change)="onMenuListChanges($event)" id="nestable">
+        <ol class="dd-list">
+            <li class="dd-item" *ngFor="let item of list" [attr.data-id]="item.id" [item]="item" [itemList]="item.children" app-tariff-category-list-item></li>
+        </ol>
+      </div>
+    </div>
+  </div>

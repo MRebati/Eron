@@ -1,0 +1,65 @@
+
+<div class="product-filter">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="btn-group">
+          <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="" data-original-title="List">
+            <i class="fa fa-th-list"></i>
+          </button>
+          <button type="button" id="grid-view" class="btn btn-default selected" data-toggle="tooltip" title="" data-original-title="Grid">
+            <i class="fa fa-th"></i>
+          </button>
+        </div>
+      </div>
+      <!-- <a href="compare.html" id="compare-total">محصولات مقایسه (0)</a> </div> -->
+      <!-- <div class="col-sm-2 text-right">
+        <label class="control-label" for="input-sort">مرتب سازی :</label>
+      </div>
+      <div class="col-md-3 col-sm-2 text-right">
+        <select id="input-sort" class="form-control minimal">
+          <option value="" selected="selected">پیشفرض</option>
+          <option value="">نام (الف - ی)</option>
+          <option value="">نام (ی - الف)</option>
+          <option value="">قیمت (کم به زیاد)</option>
+          <option value="">قیمت (زیاد به کم)</option>
+          <option value="">امتیاز (بیشترین)</option>
+          <option value="">امتیاز (کمترین)</option>
+          <option value="">مدل (A - Z)</option>
+          <option value="">مدل (Z - A)</option>
+        </select>
+      </div> -->
+      <div class="col-sm-2 text-right">
+        <label class="control-label" for="input-limit">نمایش :</label>
+      </div>
+      <div class="col-sm-2 text-right">
+        <select [(ngModel)]="pageSize" id="input-limit" class="form-control minimal" [(ngModel)]="p">
+          <option value="20" selected="selected">20</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="75">75</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <br>
+
+<div class="row products-category">
+  <app-product-item *ngFor="let item of list | paginate: { itemsPerPage: pageSize, currentPage: p }; let index = index" [item]="item"
+    [index]="index"></app-product-item>
+
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <pagination-controls
+    class="pull-left"
+    (pageChange)="p = $event"
+    previousLabel="قبلی"
+    nextLabel="بعدی"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="صفحه"
+    screenReaderCurrentLabel="صفحه فعلی شما"
+    directionLinks="true"
+    ></pagination-controls>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    ویرایش مجموعه
+    <a class="close-link pull-left" routerLink="/controlpanel/productcategories/">
+      <i class="fa fa-times"></i>
+    </a>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="row">
+            <label class="col-md-3 control-label">عنوان</label>
+
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="title" [(ngModel)]="model.title">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <label class="col-md-3 control-label">متن آدرس</label>
+
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="slug" [(ngModel)]="model.slug">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <label class="col-md-3 control-label">کلمات کلیدی</label>
+
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="keywords" [(ngModel)]="model.keywords" tagsinputwithmodel #keywordsInput>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <label class="col-md-3 control-label">توضیحات</label>
+
+            <div class="col-md-9">
+              <textarea class="form-control" name="description" [(ngModel)]="model.description"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-9 pull-left">
+              <label>
+                <input type="checkbox" name="viewOnHomePage" [(ngModel)]="model.viewOnHomePage" icheck/> نمایش مجموعه در صفحه اصلی
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-9 pull-left">
+              <label>
+                <input type="checkbox" name="promoted" [(ngModel)]="model.promoted" icheck/> مجموعه ویژه
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-warning btn-block" [ladda]="submitting" (click)="save(keywordsInput)">ذخیره</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

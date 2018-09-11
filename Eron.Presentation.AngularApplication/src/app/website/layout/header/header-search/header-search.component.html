@@ -1,0 +1,6 @@
+<div id="search" class="input-group">
+  <input id="filter_name" [(ngModel)]="searchQuery" (keyup.enter)="search()" type="text" name="search" value="" placeholder="جستجو" class="form-control input-lg" />
+  <button type="button" (click)="search()" class="button-search">
+    <i class="fa fa-search"></i>
+  </button>
+</div>

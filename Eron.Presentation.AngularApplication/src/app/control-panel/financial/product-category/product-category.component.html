@@ -1,0 +1,22 @@
+<app-bread-crump [BreadCrump]="breadCrump"></app-bread-crump>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ibox">
+        <div class="ibox-title">
+          <h4>مجموعه ها</h4>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-md-6">
+              <product-category-list></product-category-list>
+            </div>
+            <div class="col-md-6">
+
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

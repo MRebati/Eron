@@ -1,0 +1,90 @@
+<div id="header">
+  <!-- Top Bar Start-->
+  <nav id="top" class="htop">
+    <div class="container">
+      <div class="row container">
+        <span class="drop-icon visible-sm visible-xs">
+          <i class="fa fa-align-justify"></i>
+        </span>
+        <div class="pull-right flip left-top">
+          <div class="links">
+            <ul>
+              <li class="mobile">
+                {{phoneNumber}}
+                <i class="fa fa-phone"></i>
+              </li>
+              <li class="email">
+                <a href="mailto:{{mailAddress}}">
+                  {{mailAddress}}
+                  <i class="fa fa-envelope"></i>
+                </a>
+              </li>
+
+              <li *ngIf="authenticated">
+                <a routerLink="/invoices">فاکتور های من</a>
+              </li>
+
+              <li *ngIf="authenticated">
+                <a routerLink="/orders">سفارشات من</a>
+              </li>
+
+              <li *ngIf="authenticated">
+                <a routerLink="/checkout">تسویه حساب</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="top-links" class="nav pull-left flip">
+          <ul *ngIf="authenticated else unAuthenticatedSection">
+            <li>
+              <a (click)="logout()">خروج</a>
+            </li>
+            <li class="mobile">
+              &nbsp;&nbsp;<a routerLink="/user/manage">{{userName}}</a>&nbsp;&nbsp;
+            </li>
+          </ul>
+          <ng-template #unAuthenticatedSection>
+            <ul>
+              <li>
+                <a routerLink="/login">ورود</a>
+              </li>
+              <li>
+                <a routerLink="/register">ثبت نام</a>
+              </li>
+            </ul>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Top Bar End-->
+  <!-- Header Start-->
+  <header class="header-row">
+    <div class="container">
+      <div class="table-container">
+        <!-- Logo Start -->
+        <div class="col-table-cell col-lg-4 col-md-4 col-sm-12 col-xs-12 inner">
+          <div id="logo">
+            <a routerLink="/">
+              <img class="img-responsive" src="assets/img/website/logo.png" [title]="applicationName" [alt]="applicationName"
+              />
+            </a>
+          </div>
+        </div>
+        <!-- Logo End -->
+        <!-- جستجو Start-->
+        <div class="col-table-cell col-lg-5 col-md-5 col-md-push-0 col-sm-6 col-sm-push-6 col-xs-12" app-header-search>
+        </div>
+        <!-- جستجو End-->
+        <!-- Mini Cart Start-->
+        <div class="col-table-cell col-lg-3 col-md-3 col-md-pull-0 col-sm-6 col-sm-pull-6 col-xs-12 inner" app-cart-shortcut>
+        </div>
+        <!-- Mini Cart End-->
+      </div>
+    </div>
+  </header>
+  <!-- Header End-->
+  <!-- Main Start-->
+  <app-menu></app-menu>
+  <!-- Main End-->
+</div>

@@ -1,0 +1,133 @@
+<div class="wrapper-wide">
+    <app-header></app-header>
+    <div id="container">
+        <div class="container">
+            <!-- Breadcrumb Start-->
+            <ul class="breadcrumb">
+              <li><a routerLink="/"><i class="fa fa-home"></i></a></li>
+              <li><a routerLink="/user/manage">حساب کاربری</a></li>
+              <li><a routerLink="/user/manage">مدیریت حساب</a></li>
+            </ul>
+            <!-- Breadcrumb End-->
+            <div class="row">
+              <!--Middle Part Start-->
+              <div class="col-sm-9" id="content">
+                <h1 class="title">مدیریت اطلاعات حساب کاربری</h1>
+                <form class="form-horizontal">
+                  <fieldset id="account">
+                    <legend>اطلاعات شخصی</legend>
+                    <div style="display: none;" class="form-group required">
+                      <label class="col-sm-2 control-label">گروه مشتری</label>
+                      <div class="col-sm-10">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" checked="checked" value="1" name="customer_group_id">
+                            پیشفرض</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-firstname" class="col-sm-2 control-label">نام</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="user.firstName" class="form-control" id="input-firstname" placeholder="نام" value="" name="firstname">
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-lastname" class="col-sm-2 control-label">نام خانوادگی</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="user.lastName" class="form-control" id="input-lastname" placeholder="نام خانوادگی" value="" name="lastname">
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-email" class="col-sm-2 control-label">آدرس ایمیل</label>
+                      <div class="col-sm-10">
+                        <input type="email" [(ngModel)]="user.email" disabled class="form-control" id="input-email" placeholder="آدرس ایمیل" value="" name="email">
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-telephone" class="col-sm-2 control-label">شماره تلفن</label>
+                      <div class="col-sm-10">
+                        <input type="tel" [(ngModel)]="user.phoneNumber" class="form-control" id="input-telephone" placeholder="شماره تلفن" value="" name="telephone">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="input-fax" class="col-sm-2 control-label">فکس</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="user.faxNumber" class="form-control" id="input-fax" placeholder="فکس" value="" name="fax">
+                      </div>
+                    </div>
+                  </fieldset>
+                  <fieldset id="address">
+                    <legend>آدرس</legend>
+                    <div class="form-group">
+                      <label for="input-company" class="col-sm-2 control-label">شرکت</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="user.companyName" class="form-control" id="input-company" placeholder="شرکت" name="company">
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-postcode" class="col-sm-2 control-label">کد پستی</label>
+                      <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="user.postalCode" class="form-control" id="input-postcode" placeholder="کد پستی" name="postalCode">
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-country" class="col-sm-2 control-label">استان</label>
+                      <div class="col-sm-10">
+                        <select [(ngModel)]="user.provinceName" (ngModelChange)="provinceChanged()" class="form-control minimal" id="input-country" name="country_id">
+                          <option value=""> --- لطفا انتخاب کنید --- </option>
+                          <option *ngFor="let provinceItem of provinceList" [value]="provinceItem.name">{{provinceItem.name}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-zone" class="col-sm-2 control-label">شهر</label>
+                      <div class="col-sm-10">
+                        <select [(ngModel)]="user.cityName" class="form-control  minimal" id="input-zone" name="zone_id">
+                          <option value=""> --- لطفا انتخاب کنید --- </option>
+                          <option *ngFor="let cityItem of cityList" [value]="cityItem.name">{{cityItem.name}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-address" class="col-sm-2 control-label">آدرس</label>
+                        <div class="col-sm-10">
+                          <input type="text" [(ngModel)]="user.address" class="form-control" id="input-address" placeholder="آدرس" value="" name="address">
+                        </div>
+                      </div>
+                  </fieldset>
+
+                  <div class="buttons">
+                     <div class="pull-right">
+                      <!--<input type="checkbox" value="1" name="agree" [(ngModel)]="termsAccepted">
+                      &nbsp;من <a class="agree" href="#"><b>سیاست حریم خصوصی</b> را خوانده ام و با آن موافق هستم</a> &nbsp; -->
+                      <input type="button" (click)="onSubmit()" class="btn btn-primary" value="ذخیره">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!--Middle Part End -->
+              <!--Right Part Start -->
+              <aside id="column-right" class="col-sm-3 hidden-xs">
+                <h3 class="subtitle">حساب کاربری</h3>
+                <div class="list-group">
+                  <ul class="list-item">
+                    <li><a routerLink="/user/manage">اطلاعات عمومی</a></li>
+                    <li><a routerLink="/user/change-password">تغییر رمز عبور</a></li>
+                    <li><a routerLink="/user/mobile-confirmation">تایید شماره همراه</a></li>
+                    <li><a routerLink="/user/change-picture">تغییر تصویر پروفایل</a></li>
+                    <li><a routerLink="/user/transactions">تراکنش ها</a></li>
+                    <li><a routerLink="/user/newsletter">خبرنامه</a></li>
+                    <li><a routerLink="/user/wish-list">لیست علاقه مندی</a></li>
+                    <li><a routerLink="/">بازگشت</a></li>
+                  </ul>
+                </div>
+              </aside>
+              <!--Right Part End -->
+            </div>
+          </div>
+    </div>
+    <!--Footer Start-->
+    <app-footer></app-footer>
+    <!--Footer End-->
+  </div>

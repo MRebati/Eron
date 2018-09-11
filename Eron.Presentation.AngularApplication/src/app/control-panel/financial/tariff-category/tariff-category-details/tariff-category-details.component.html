@@ -1,0 +1,61 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      جزئیات مجموعه
+      <a class="close-link pull-left" [routerLink]="['/controlpanel','tariffcategories']">
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <div class="row">
+              <label class="col-md-3 control-label">عنوان</label>
+
+              <div class="col-md-9">
+                <input type="text" class="form-control" name="title"disabled="disabled"  [(ngModel)]="model.title">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <label class="col-md-3 control-label">متن آدرس</label>
+
+              <div class="col-md-9">
+                <input type="text" class="form-control" name="slug"disabled="disabled"  [(ngModel)]="model.slug">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <label class="col-md-3 control-label">کلمات کلیدی</label>
+
+              <div class="col-md-9" *ngIf="model && model.keywords">
+                <badge labelStatus="random" *ngFor="let item of model.keywords.split(',')">{{item}}</badge>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <label class="col-md-3 control-label">توضیحات</label>
+
+              <div class="col-md-9">
+                <textarea class="form-control" name="description"disabled="disabled"  [(ngModel)]="model.description"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-12" *ngIf="model.imageId && model.imageId != '00000000-0000-0000-0000-000000000000'">
+                <img [src]="model.imageAddress"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

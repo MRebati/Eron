@@ -1,0 +1,29 @@
+.product-thumb .image a img {
+}
+
+.product-thumb .image a {
+  display: block;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 198px;
+}
+
+.product-thumb .button-group .btn-primary {
+  padding: 4px 8px;
+  margin-bottom: 7px;
+  font-size: 15px;
+  height: auto;
+  text-transform: uppercase;
+  line-height: normal;
+  background: #cca548;
+  color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.2);
+}
+.product-thumb .image a img {
+  display: inline-block;
+  width: 100%;
+  border-radius: 15px;
+  height: auto;
+}

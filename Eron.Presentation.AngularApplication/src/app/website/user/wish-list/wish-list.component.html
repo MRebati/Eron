@@ -1,0 +1,75 @@
+<div class="wrapper-wide">
+  <app-header></app-header>
+  <div id="container">
+    <div class="container">
+      <!-- Breadcrumb Start-->
+      <ul class="breadcrumb">
+        <li>
+          <a routerLink="/">
+            <i class="fa fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/user/manage">حساب کاربری</a>
+        </li>
+        <li>
+          <a routerLink="/user/manage">لیست علاقه مندی</a>
+        </li>
+      </ul>
+      <!-- Breadcrumb End-->
+      <div class="row">
+        <!--Middle Part Start-->
+        <div class="col-sm-9" id="content">
+          <h1 class="title">لیست علاقه مندی</h1>
+          <div class="table-responsive">
+            <table class="table table-hover issue-tracker">
+              <tbody>
+                <tr *ngFor="let item of itemList; let index = index">
+                  <td>
+                    <span *ngIf="item.product.existsInShop" class="label label-primary">موجود</span>
+                    <span *ngIf="!item.product.existsInShop" class="label label-danger">ناموجود</span>
+                  </td>
+                  <td class="issue-info">
+                    <a [routerLink]="['/products','details', item.product.productCode]">
+                      {{item.product.name}}
+                    </a>
+                    <small>{{item.product.productCode}}</small>
+                  </td>
+                  <td>
+                    {{item.createdDateTime | jalali}}
+                  </td>
+                  <td>
+                    {{item.product.price | priceToman }}
+                  </td>
+                  <td class="text-right">
+                    <button class="btn btn-white btn-xs" (click)="onDelete(item, index)"> حذف از لیست</button>
+                  </td>
+                </tr>
+                <tr *ngIf="itemList.length == 0">
+                  <p class="text-center">لیست علاقه مندی شما خالیست</p>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!--Middle Part End -->
+        <!--Right Part Start -->
+        <aside id="column-right" class="col-sm-3 hidden-xs">
+          <h3 class="subtitle">حساب کاربری</h3>
+          <div class="list-group">
+            <ul class="list-item">
+              <li><a routerLink="/user/manage">اطلاعات عمومی</a></li>
+              <li><a routerLink="/user/change-password">تغییر رمز عبور</a></li>
+              <li><a routerLink="/user/wish-list">لیست علاقه مندی</a></li>
+              <li><a routerLink="/">بازگشت</a></li>
+            </ul>
+          </div>
+        </aside>
+        <!--Right Part End -->
+      </div>
+    </div>
+  </div>
+  <!--Footer Start-->
+  <app-footer></app-footer>
+  <!--Footer End-->
+</div>

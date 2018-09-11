@@ -1,41 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E3D36E1A-E5DA-4E05-B62B-E54E9DC71954}</ProjectGuid>
-    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectGuid>{7AC8303B-8D88-407B-BBC1-5E36312A8AF1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Eron.core</RootNamespace>
-    <AssemblyName>Eron.core</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
-    <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <RootNamespace>Eron.Core</RootNamespace>
+    <AssemblyName>Eron.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,373 +24,133 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.3.4.0\lib\net40\Autofac.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="AutoMapper.Attributes, Version=6.0.0.0, Culture=neutral, PublicKeyToken=bbc347385eae1a0e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.Attributes.6.0.0\lib\net45\AutoMapper.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Collections.Concurrent" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IdentityModel" />
-    <Reference Include="System.IdentityModel.Selectors" />
-    <Reference Include="System.identitymodel.services" />
-    <Reference Include="System.IO" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Transactions" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Net.Http">
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest">
-    </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="WebGrease">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Net.Http.Formatting">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Owin">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin">
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Host.SystemWeb">
-      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security">
-      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Facebook">
-      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies">
-      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.OAuth">
-      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Google">
-      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Twitter">
-      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
-      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="App_GlobalResources\GlobalResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GlobalResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\GlobalResources.fa.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GlobalResources.fa.resx</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\Context.cs" />
-    <Compile Include="DataAccess\Repositories\Utilities\SliderRepository.cs" />
-    <Compile Include="DataModel\Articles\CategoryModels.cs" />
-    <Compile Include="DataModel\Articles\CommentModels.cs" />
-    <Compile Include="DataModel\Articles\ArticleModels.cs" />
-    <Compile Include="DataModel\Articles\LikeModels.cs" />
-    <Compile Include="DataModel\Content\CategoryModels.cs" />
-    <Compile Include="DataModel\Content\CommentModels.cs" />
-    <Compile Include="DataModel\Content\ContentModels.cs" />
-    <Compile Include="DataModel\Content\LikeModels.cs" />
-    <Compile Include="DataModel\EntityBase.cs" />
-    <Compile Include="DataModel\File\FileModels.cs" />
-    <Compile Include="DataModel\Location\GoogleMapModels.cs" />
-    <Compile Include="DataModel\Location\LanguageModels.cs" />
-    <Compile Include="DataModel\Location\StateModels.cs" />
-    <Compile Include="DataModel\Navigation\Footer.cs" />
-    <Compile Include="DataModel\Navigation\Menu.cs" />
-    <Compile Include="DataModel\Page\Page.cs" />
-    <Compile Include="DataModel\Product\Product.cs" />
-    <Compile Include="DataModel\Product\ProductCategory.cs" />
-    <Compile Include="DataModel\Product\ProductProperty.cs" />
-    <Compile Include="DataModel\Registry\ContentRegistry.cs" />
-    <Compile Include="DataModel\ReportingBase.cs" />
-    <Compile Include="DataModel\Search\TagModels.cs" />
-    <Compile Include="DataModel\Utilities\Slider.cs" />
-    <Compile Include="DataModel\Utilities\SliderCategory.cs" />
-    <Compile Include="DataModel\VoteBase.cs" />
-    <Compile Include="DataAccess\Repositories\Articles\CategoryRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Articles\CommentRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Articles\ArticleRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Articles\ArticleLikeRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Content\CategoryRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Content\CommentRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Content\ContentRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Content\LikeRepository.cs" />
-    <Compile Include="DataAccess\Repositories\IRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Location\GoogleMapRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Location\LanguageRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Location\StateRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Location\SubStateRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Navigation\FooterRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Navigation\MenuRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Page\PageRepository.cs" />
-    <Compile Include="DataAccess\Repositories\Repository.cs" />
-    <Compile Include="DataAccess\Repositories\Search\TagRepository.cs" />
-    <Compile Include="Encode\Encode.cs" />
-    <Compile Include="Encode\IEncode.cs" />
-    <Compile Include="Migrations\201610060908230_conf-reset-all.cs" />
-    <Compile Include="Migrations\201610060908230_conf-reset-all.Designer.cs">
-      <DependentUpon>201610060908230_conf-reset-all.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610060910228_conf-init.cs" />
-    <Compile Include="Migrations\201610060910228_conf-init.Designer.cs">
-      <DependentUpon>201610060910228_conf-init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610060912042_conf-votebase-change-1.cs" />
-    <Compile Include="Migrations\201610060912042_conf-votebase-change-1.Designer.cs">
-      <DependentUpon>201610060912042_conf-votebase-change-1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610061640402_conf-slide-endtime-change-1.cs" />
-    <Compile Include="Migrations\201610061640402_conf-slide-endtime-change-1.Designer.cs">
-      <DependentUpon>201610061640402_conf-slide-endtime-change-1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610091859068_conf-sliderCategory-init.cs" />
-    <Compile Include="Migrations\201610091859068_conf-sliderCategory-init.Designer.cs">
-      <DependentUpon>201610091859068_conf-sliderCategory-init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\FileHelper\FileHelper.cs" />
-    <Compile Include="Models\FileHelper\FileType.cs" />
-    <Compile Include="Models\FileHelper\IFileHelper.cs" />
-    <Compile Include="PersianDateTime\IPersian.cs" />
-    <Compile Include="PersianDateTime\Persian.cs" />
+    <Compile Include="AppEnums\BankNameType.cs" />
+    <Compile Include="AppEnums\CustomerType.cs" />
+    <Compile Include="AppEnums\DatePeriodType.cs" />
+    <Compile Include="AppEnums\FileType.cs" />
+    <Compile Include="AppEnums\InvoiceStatusType.cs" />
+    <Compile Include="AppEnums\Language.cs" />
+    <Compile Include="AppEnums\LinkPlacement.cs" />
+    <Compile Include="AppEnums\LinkType.cs" />
+    <Compile Include="AppEnums\MapperType.cs" />
+    <Compile Include="AppEnums\OrderStatusType.cs" />
+    <Compile Include="AppEnums\OrderType.cs" />
+    <Compile Include="AppEnums\StarRate.cs" />
+    <Compile Include="AppEnums\TariffItemType.cs" />
+    <Compile Include="AppEnums\TenantType.cs" />
+    <Compile Include="AppEnums\TokenType.cs" />
+    <Compile Include="AppEnums\UrlTargetType.cs" />
+    <Compile Include="Entities\Base\BannerSlider.cs" />
+    <Compile Include="Entities\Base\Link.cs" />
+    <Compile Include="Entities\Base\Page.cs" />
+    <Compile Include="Entities\Base\Tenant.cs" />
+    <Compile Include="Entities\Blog\Blog.cs" />
+    <Compile Include="Entities\Blog\BlogArchive.cs" />
+    <Compile Include="Entities\Blog\Comment.cs" />
+    <Compile Include="Entities\Blog\HashTag.cs" />
+    <Compile Include="Entities\Blog\Like.cs" />
+    <Compile Include="Entities\Financial\Base\CartItem.cs" />
+    <Compile Include="Entities\Financial\Base\FinanceTransaction.cs" />
+    <Compile Include="Entities\Financial\Base\InvoiceLog.cs" />
+    <Compile Include="Entities\Financial\Base\ServiceReview.cs" />
+    <Compile Include="Entities\Financial\Base\UserMessage.cs" />
+    <Compile Include="Entities\Financial\Base\WishList.cs" />
+    <Compile Include="Entities\Financial\Order\Order.cs" />
+    <Compile Include="Entities\Financial\Order\OrderLog.cs" />
+    <Compile Include="Entities\Financial\Order\Tariff.cs" />
+    <Compile Include="Entities\Financial\Order\TariffCategory.cs" />
+    <Compile Include="Entities\Financial\Order\TariffItem.cs" />
+    <Compile Include="Entities\Financial\Order\TariffPrice.cs" />
+    <Compile Include="Entities\Base\EronFile.cs" />
+    <Compile Include="Entities\Financial\Base\Invoice.cs" />
+    <Compile Include="Entities\Financial\Base\InvoiceItem.cs" />
+    <Compile Include="Entities\Financial\Base\Offer.cs" />
+    <Compile Include="Entities\Financial\Shop\Product.cs" />
+    <Compile Include="Entities\Financial\Shop\ProductCategory.cs" />
+    <Compile Include="Entities\Financial\Shop\ProductPrice.cs" />
+    <Compile Include="Entities\Financial\Shop\ProductProperty.cs" />
+    <Compile Include="Entities\Financial\Shop\ProductPropertyName.cs" />
+    <Compile Include="Entities\User\ApplicationUser.cs" />
+    <Compile Include="Exceptions\EntityNotFoundException.cs" />
+    <Compile Include="Exceptions\NotAllowedOperationException.cs" />
+    <Compile Include="Infrastructure\Entity.cs" />
+    <Compile Include="Infrastructure\EnumHelper.cs" />
+    <Compile Include="Infrastructure\IEntity.cs" />
+    <Compile Include="InternalHelpers\InternalExpressionHelper.cs" />
+    <Compile Include="ManagementSettings\ApplicationFolder.cs" />
+    <Compile Include="ManagementSettings\ApplicationSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IRepositoryService.cs" />
-    <Compile Include="Services\RepositoryService.cs" />
-    <Compile Include="ValueObjects\ContentRegistryType.cs" />
-    <Compile Include="ValueObjects\IInsight.cs" />
-    <Compile Include="ValueObjects\MenuType.cs" />
-    <Compile Include="ViewModels\Category\CategoryCreate.cs" />
-    <Compile Include="ViewModels\Category\CategoryEdit.cs" />
-    <Compile Include="ViewModels\Category\CategoryList.cs" />
-    <Compile Include="ViewModels\Content\ContentCreate.cs" />
-    <Compile Include="ViewModels\Content\ContentEdit.cs" />
-    <Compile Include="ViewModels\Content\ContentListView.cs" />
-    <Compile Include="ViewModels\IModelFactory.cs" />
-    <Compile Include="ViewModels\Language\LanguageCreate.cs" />
-    <Compile Include="ViewModels\Language\LanguageEdit.cs" />
-    <Compile Include="ViewModels\Language\LanguageList.cs" />
-    <Compile Include="ViewModels\ModelFactory.cs" />
-    <Compile Include="ViewModels\Navigation\FooterCreate.cs" />
-    <Compile Include="ViewModels\Navigation\FooterList.cs" />
-    <Compile Include="ViewModels\Navigation\MenuCreate.cs" />
-    <Compile Include="ViewModels\Navigation\MenuList.cs" />
-    <Compile Include="ViewModels\Page\PageCreate.cs" />
-    <Compile Include="ViewModels\Page\PageList.cs" />
-    <Compile Include="ViewModels\SelectListItem.cs" />
-    <Compile Include="ViewModels\Slider\SliderViewModel.cs" />
+    <Compile Include="ValueObjects\IPagedListRequest.cs" />
+    <Compile Include="ValueObjects\IPagedListResult.cs" />
+    <Compile Include="ValueObjects\PagedListRequest.cs" />
+    <Compile Include="ValueObjects\PagedListResult.cs" />
+    <Compile Include="ValueObjects\SelectListObject.cs" />
+    <Compile Include="ValueObjects\Tree.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataAccess\Repositories\File\" />
-    <Folder Include="DataAccess\Repositories\Registry\" />
+    <Folder Include="Events\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
-    <Content Include="packages.config" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="App_GlobalResources\GlobalResources.fa.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GlobalResources.fa.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\GlobalResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GlobalResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610060908230_conf-reset-all.resx">
-      <DependentUpon>201610060908230_conf-reset-all.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610060910228_conf-init.resx">
-      <DependentUpon>201610060910228_conf-init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610060912042_conf-votebase-change-1.resx">
-      <DependentUpon>201610060912042_conf-votebase-change-1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610061640402_conf-slide-endtime-change-1.resx">
-      <DependentUpon>201610061640402_conf-slide-endtime-change-1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610091859068_conf-sliderCategory-init.resx">
-      <DependentUpon>201610091859068_conf-sliderCategory-init.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-  </PropertyGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
-    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
-  </Target>
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
-        <WebProjectProperties>
-          <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>18723</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:18723/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-        </WebProjectProperties>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target> -->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

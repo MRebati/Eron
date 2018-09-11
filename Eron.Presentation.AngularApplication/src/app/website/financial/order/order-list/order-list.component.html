@@ -1,0 +1,44 @@
+<div class="wrapper-wide">
+    <app-header></app-header>
+    <div id="container">
+
+
+      <div class="container">
+        <!-- Breadcrumb Start-->
+        <ul class="breadcrumb">
+          <li>
+            <a routerLink="/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/order">سفارش</a>
+          </li>
+          <li>
+            <a [routerLink]="['/order', 'category', categoryId, category.slug]">{{ category.title }}</a>
+          </li>
+        </ul>
+        <!-- Breadcrumb End-->
+        <div class="row">
+          <!--Middle Part Start-->
+          <div id="content" class="col-sm-12">
+            <h1 class="title">سفارش دهید</h1>
+              <div class="row">
+                <div class="col-md-12">
+                  <div *ngFor="let tariff of tariffs" class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                    <div class="product-layout product-grid " app-order-list-item [tariff]="tariff"></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!--Middle Part End -->
+        </div>
+      </div>
+
+    </div>
+    <!--Footer Start-->
+    <app-footer></app-footer>
+    <!--Footer End-->
+    <!-- Facebook Side Block Start -->
+
+  </div>

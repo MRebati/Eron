@@ -1,0 +1,51 @@
+<h3 class="subtitle">پرفروش ها</h3>
+<div class="owl-carousel product_carousel">
+  <div class="product-thumb clearfix" *ngFor="let product of productList">
+    <div class="image">
+      <a [routerLink]="['/product',product.productCode, product.name | slug]">
+        <img [src]="product.defaultImageAddress" [alt]="product.title" [title]="product.name" class="img-responsive"
+        />
+      </a>
+    </div>
+    <div class="caption">
+      <h4>
+        <a [routerLink]="['/product',product.productCode, product.name | slug]">{{product.name}}</a>
+      </h4>
+      <p class="price">{{ product.price | priceToman }}</p>
+      <!-- <div class="rating">
+        <span class="fa fa-stack">
+          <i class="fa fa-star fa-stack-2x"></i>
+          <i class="fa fa-star-o fa-stack-2x"></i>
+        </span>
+        <span class="fa fa-stack">
+          <i class="fa fa-star fa-stack-2x"></i>
+          <i class="fa fa-star-o fa-stack-2x"></i>
+        </span>
+        <span class="fa fa-stack">
+          <i class="fa fa-star fa-stack-2x"></i>
+          <i class="fa fa-star-o fa-stack-2x"></i>
+        </span>
+        <span class="fa fa-stack">
+          <i class="fa fa-star fa-stack-2x"></i>
+          <i class="fa fa-star-o fa-stack-2x"></i>
+        </span>
+        <span class="fa fa-stack">
+          <i class="fa fa-star-o fa-stack-2x"></i>
+        </span>
+      </div> -->
+    </div>
+    <div  class="button-group">
+      <button  class="btn-primary" (click)="onAddToCart(product)" type="button">
+        <span>افزودن به سبد</span>
+      </button>
+      <div  class="add-to-links">
+        <button  data-toggle="tooltip" (click)="onAddToWishList(product)" title="" type="button" data-original-title="افزودن به علاقه مندی">
+          <i  class="fa fa-heart"></i>
+        </button>
+        <!-- <button  data-toggle="tooltip" (click)="onAddToCompareList(product)" title="" type="button" data-original-title="افزودن به مقایسه">
+          <i  class="fa fa-exchange"></i>
+        </button> -->
+      </div>
+    </div>
+  </div>
+</div>

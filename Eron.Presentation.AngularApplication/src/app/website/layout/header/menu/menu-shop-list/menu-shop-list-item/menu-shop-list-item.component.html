@@ -1,0 +1,10 @@
+<a *ngIf="!item.children.length" [routerLink]="['/products','category',item.title,item.id]">{{item.title}}</a>
+<a *ngIf="item.children.length">{{item.title}}
+  <span>&rsaquo;</span>
+</a>
+<div *ngIf="item.children.length" class="dropdown-menu">
+  <ul>
+    <li *ngFor="let child of item.children" [item]="child" app-menu-shop-list-item>
+    </li>
+  </ul>
+</div>

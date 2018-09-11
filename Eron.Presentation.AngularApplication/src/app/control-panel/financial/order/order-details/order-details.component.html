@@ -1,0 +1,153 @@
+<route-modal [cancelUrl]="['/controlpanel/orders']" modalClass="modal-lg">
+  <modal-header>
+    <h1>جزئیات سفارش شماره
+      <span class="enNumber uppercase">{{orderNumber}}</span>
+    </h1>
+  </modal-header>
+  <modal-content>
+    <div class="row">
+      <div class="col-md-12" *ngIf="loading">
+        <div class="text-center loading-content">
+          <i class="fa fa-spinner fa-pulse fa-2x fa-fw text-success"></i>
+          <div class="loading-text">در حال بارگزاری، لطفا اندکی صبر کنید</div>
+        </div>
+      </div>
+      <div class="col-md-12" *ngIf="!loading">
+        <div class="form-horizontal">
+          <div class="form-group">
+            <label for="item1" class="control-label col-md-3 text-left">شناسه سفارش</label>
+            <div class="col-md-9">
+              <p class="form-control-static enNumber uppercase" id="item1">{{model.orderNumber}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item2" class="control-label col-md-3 text-left">شماره فاکتور</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item2">{{ model.invoiceNumber != null ? model.invoiceNumber : 'فاکتور صادر نشده است'}}</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="item12" class="control-label col-md-3 text-left">نام سفارش دهنده</label>
+            <div class="col-md-9">
+              <p class="form-control-static" *ngIf="model.user" id="item12">{{model.user != null ? model.user.firstName + ' '+ model.user.lastName : ''}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item13" class="control-label col-md-3 text-left">شماره تماس سفارش دهنده</label>
+            <div class="col-md-9">
+              <p class="form-control-static" *ngIf="model.user" id="item13">{{model.user != null ? model.user.phoneNumber: ''}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item14" class="control-label col-md-3 text-left">آدرس سفارش دهنده</label>
+            <div class="col-md-9">
+              <p class="form-control-static" *ngIf="model.user" id="item14">{{model.user != null ? model.user.address : ''}}</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="item3" class="control-label col-md-3 text-left">نام تعرفه</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item3">{{model.tariffName}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item4" class="control-label col-md-3 text-left">تاریخ ثبت سفارش</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item4">{{model.createDateTime | jalali}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item5" class="control-label col-md-3 text-left">وضعیت سفارش</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item5">{{model.orderStatus | orderstatus}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item6" class="control-label col-md-3 text-left">مبلغ تعرفه</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item6">{{model.price | priceToman}}</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="item7" class="control-label col-md-3 text-left">تعداد پایه</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item7">{{model.quantity / model.count}}</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="item7" class="control-label col-md-3 text-left">تعداد کل</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item7">{{model.quantity}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item8" class="control-label col-md-3 text-left">مبلغ کل</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item8">{{model.finalPrice | priceToman}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item9" class="control-label col-md-3 text-left">درخواست طراحی</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item9">{{model.hasDesignOrder? 'دارد': 'ندارد'}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item10" class="control-label col-md-3 text-left">هزینه طراحی</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item10">{{model.designPrice | priceToman}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item11" class="control-label col-md-3 text-left">توضیحات</label>
+            <div class="col-md-9">
+              <p class="form-control-static" id="item11">{{model.description}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item12" class="control-label col-md-3 text-left">تصاویر</label>
+            <div class="col-md-9">
+              <p *ngFor="let item of model.imageAddresses; let index = index" class="form-control-static" id="item12">
+                <a [href]="item" target="_blank">دانلود فایل شماره {{index + 1}}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-primary" [routerLink]="['/controlpanel/orders']">بستن</button>
+    <button class="btn btn-success" *ngIf="model.hasDesignOrder" [disabled]="model.orderStatus != 8 && model.orderStatus != 0"
+      (click)="assignDesignPriceModal.open()">تعیین / تغییر هزینه طراحی</button>
+  </modal-footer>
+</route-modal>
+
+<modal #assignDesignPriceModal title="تعیین هزینه سفارشات" cancelButtonLabel="لغو" submitButtonLabel="ذخیره" modalClass=""
+  [closeOnEscape]="true" [closeOnOutsideClick]="true" (onSubmit)="onChangeDesignPrice()">
+
+  <modal-header>
+  </modal-header>
+
+  <modal-content>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="" class="control-label col-md-3">هزینه طراحی</label>
+          <div class="col-md-12">
+            <input type="text" class="form-control money dir-left text-left" currencyMask [options]="{ prefix: 'ریال', thousands: ',', decimal: '.', precision: 0 }"
+              [(ngModel)]="changeModel.designPrice">
+          </div>
+        </div>
+      </div>
+    </div>
+  </modal-content>
+
+  <modal-footer>
+  </modal-footer>
+
+</modal>

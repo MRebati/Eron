@@ -1,0 +1,27 @@
+<div *ngIf="type == 'topSlider'" class="slideshow single-slider owl-carousel">
+  <div *ngFor="let item of list" class="item">
+    <a href="#">
+      <img class="img-responsive" [src]="item.fileAddress" alt="{{item.title}}" />
+    </a>
+  </div>
+</div>
+
+<ng-container *ngIf="type == 'banner' && list[0]">
+  <a [href]="list[0]?.linkUrl" *ngIf="!showDefault else default">
+    <img [alt]="list[0]?.title" [src]="list[0]?.fileAddress" [title]="list[0]?.title">
+  </a>
+</ng-container>
+
+<ng-container *ngIf="showDefault" #default>
+  <img *ngIf="defaultsize" [alt]="defaultsize" [src]="'http://via.placeholder.com/'+defaultsize" [title]="defaultsize + '['+groupName+']'">
+  <img *ngIf="!defaultsize" [alt]="defaultsize" [src]="'http://via.placeholder.com/?text='+group" [title]="'['+group+']'">
+</ng-container>
+
+
+<div id="clients" class="owl-carousel nxt" *ngIf="type == 'clients'">
+  <div *ngFor="let item of list" class="item text-center">
+    <a href="#">
+      <img [src]="item.fileAddress" alt="{{item.title}}" class="img-responsive" />
+    </a>
+  </div>
+</div>

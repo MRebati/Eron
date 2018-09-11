@@ -1,0 +1,121 @@
+<app-bread-crump [BreadCrump]="breadCrump"></app-bread-crump>
+
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ibox">
+        <div class="ibox-header">
+          <h4 class="ibox-title">فاکتور ها</h4>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-md-3 m-b-xs">
+              <select [(ngModel)]="filter.invoiceStatus" (ngModelChange)="onInvoiceStatusFilterChange()" class="input-sm form-control input-s-sm inline minimal">
+                <option value="" selected>همه</option>
+                <option *ngFor="let item of invoiceStatusList" [value]="item.value">{{item.title}}</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary btn-sm" [disabled]="selection.length == 0" (click)="changeStatusModal.open()">تغییر وضعیت ( {{selection.length}} )</button>
+            </div>
+            <div class="col-sm-4 m-b-xs">
+              <div data-toggle="buttons" class="btn-group">
+                <label class="btn btn-sm btn-white active" (click)="onDatePeriodFilterChange(0)">
+                  <input type="radio" id="option1" name="options"> روز</label>
+                <label class="btn btn-sm btn-white" (click)="onDatePeriodFilterChange(1)">
+                  <input type="radio" id="option2" name="options"> هفته </label>
+                <label class="btn btn-sm btn-white" (click)="onDatePeriodFilterChange(2)">
+                  <input type="radio" id="option3" name="options"> ماه </label>
+                <label class="btn btn-sm btn-white" (click)="onDatePeriodFilterChange(3)">
+                  <input type="radio" id="option4" name="options"> سال </label>
+                <label class="btn btn-sm btn-white" (click)="onDatePeriodFilterChange(4)">
+                  <input type="radio" id="option5" name="options"> همه </label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <input [(ngModel)]="filter.invoiceNumber" (ngModelChange)="onInvoiceNumberFilterChange()" type="text" placeholder="جستجو"
+                class="form-control">
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td class="text-center"></td>
+                  <td class="">وضعیت</td>
+                  <td></td>
+                  <td class="">شماره فاکتور</td>
+                  <td>تاریخ ثبت فاکتور</td>
+                  <td class="">تعداد کل</td>
+                  <td class="">قیمت کل</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of invoiceItemList.result | paginate: { itemsPerPage: filter.pageSize, currentPage: filter.pageNumber, totalItems: invoiceItemList.totalCount }; let index = index">
+                  <td class="text-center">
+                    <input type="checkbox" icheck [(ngModel)]="item.selected" (ngModelChange)="selectionChanged()">
+                  </td>
+                  <td>
+                    <badge [labelStatus]="item.invoiceStatus | invoicestatuscolor">{{item.invoiceStatus | invoicestatus }}</badge>
+                  </td>
+                  <td>
+                    <span class="pie">{{item.progress}},{{item.maxProgress}}</span>
+                  </td>
+                  <td class="enNumber uppercase">
+                    <a [routerLink]="['/controlpanel', 'shop', 'invoice', 'details', item.invoiceNumber]">{{item.invoiceNumber}}</a>
+                  </td>
+                  <td>{{item.createDateTime | jalali}}</td>
+                  <td>{{item.totalCount}}</td>
+                  <td class="text-right">{{item.amount | priceToman}}</td>
+                </tr>
+                <tr *ngIf="invoiceItemList.result.length == 0">
+                  <td colspan="7" class="text-center">با فیلتر های بالا فاکتوری یافت نشد</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <pagination-controls class="" (pageChange)="onPageChange($event)" previousLabel="قبلی" nextLabel="بعدی" screenReaderPaginationLabel="Pagination"
+                screenReaderPageLabel="صفحه" screenReaderCurrentLabel="صفحه فعلی شما" directionLinks="true">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
+<modal #changeStatusModal
+  title="تغییر وضعیت فاکتور"
+  cancelButtonLabel="لغو"
+  submitButtonLabel="ذخیره"
+  modalClass=""
+  [closeOnEscape]="true"
+  [closeOnOutsideClick]="true"
+  (onSubmit)="onInvoiceStatusChange()">
+
+  <modal-header>
+  </modal-header>
+
+  <modal-content>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <select [(ngModel)]="InvoiceStatusChangeId" class="form-control minimal">
+              <option *ngFor="let item of invoiceStatusList" [value]="item.value">{{item.title}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" placeholder="توضیحات" [(ngModel)]="InvoiceStatusChangeDescription"></textarea>
+        </div>
+      </div>
+    </div>
+  </modal-content>
+
+  <modal-footer>
+  </modal-footer>
+
+</modal>

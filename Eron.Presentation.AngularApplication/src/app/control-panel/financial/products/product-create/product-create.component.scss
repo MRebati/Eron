@@ -1,0 +1,8 @@
+.fileNameSpan {
+  width: calc(100% - 2.3em);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}

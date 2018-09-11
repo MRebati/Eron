@@ -1,0 +1,9 @@
+<a *ngIf="!item.children.length" [routerLink]="item.url">{{item.linkText}}</a>
+<a *ngIf="item.children.length">{{item.linkText}}</a>
+<div *ngIf="item.children.length" class="dropdown-menu">
+  <ul>
+    <li *ngFor="let child of item.children" app-menu-list-item [item]="child">
+      <a routerLink="login.html">ورود</a>
+    </li>
+  </ul>
+</div>

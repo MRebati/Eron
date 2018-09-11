@@ -1,0 +1,208 @@
+<div class="wrapper-wide">
+  <app-header></app-header>
+  <div id="container">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12" *ngIf="loading">
+          <div class="text-center loading-content">
+            <i class="fa fa-spinner fa-pulse fa-2x fa-fw text-success"></i>
+            <div class="loading-text">در حال بارگزاری، لطفا اندکی صبر کنید</div>
+          </div>
+        </div>
+        <div class="col-md-12" *ngIf="!loading">
+          <h1 class="header">نتایج جستجو برای:
+            <badge labelStatus="random">{{searchQuery}}</badge>
+          </h1>
+          <div class="pages" *ngIf="model.pages.length > 0">
+              <h3 class="subtitle">صفحات مرتبط</h3>
+
+              <ng-template ngFor let-page [ngForOf]="model.pages" let-index="index">
+                  <div class="search-result">
+                      <h3><a [routerLink]="'/'+page.slug">{{page.title}}</a></h3>
+                      <a [routerLink]="'/'+page.slug" class="search-link">{{domainName}}{{page.slug}}</a>
+                      <p>
+                          {{ (page.description && page.description.length>350)? (page.description | slice:0:350)+'...':(page.description) }}
+                      </p>
+                  </div>
+                  <div class="hr-line-dashed"></div>
+              </ng-template>
+
+          </div>
+          <div class="products" *ngIf="model.products.length > 0">
+            <h3 class="subtitle">محصولات مشابه</h3>
+            <div class="owl-carousel product_carousel">
+              <div class="product-thumb clearfix" *ngFor="let product of model.products">
+                <div class="image">
+                  <a [routerLink]="['/product',product.productCode, product.name | slug]">
+                    <img [src]="product.defaultImageAddress" [alt]="product.name" [title]="product.name" class="img-responsive" />
+                  </a>
+                </div>
+                <div class="caption">
+                  <h4>
+                    <a [routerLink]="['/product',product.productCode, product.name | slug]">{{product.name}}</a>
+                  </h4>
+                </div>
+                <div class="button-group">
+                  <button class="btn-primary m-t-md" type="button" [routerLink]="['/product',product.productCode, product.name | slug]">
+                    <span>نمایش</span>
+                  </button>
+                  <div class="add-to-links">
+                    <button data-toggle="tooltip" (click)="onAddToWishList(product)" title="" type="button" data-original-title="افزودن به علاقه مندی">
+                      <i class="fa fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="productCategories" *ngIf="model.productCategories.length > 0">
+            <h3 class="subtitle">مجموعه محصولات مشابه</h3>
+            <ul class="todo-list m-t ui-sortable">
+              <li *ngFor="let productCategory of model.productCategories">
+                <span class="m-l-xs text-success">
+                  <a [routerLink]="['/products','category', productCategory.title, productCategory]">{{productCategory.title}}</a>
+                </span>
+                <small> | {{ (productCategory.description && productCategory.description.length>60)? (productCategory.description | slice:0:60)+'...':(productCategory.description)
+                  }}</small>
+                <small class="label label-primary linkLable pull-left">
+                  <a [routerLink]="['/products','category', productCategory.title, productCategory.id]">برو به مجموعه &nbsp;&nbsp;
+                    <i class="fa fa-chevron-left"></i>
+                  </a>
+                </small>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tariffs" *ngIf="model.tariffs && model.tariffs.length > 0">
+              <h3 class="subtitle">محصولات چاپی مشابه</h3>
+              <ul class="todo-list m-t ui-sortable">
+                <li *ngFor="let tariff of model.tariffs">
+                  <span class="m-l-xs text-success">
+                    <a [routerLink]="['/order','category', tariff.tariffName, tariff.id]">{{tariff.tariffName}}</a>
+                  </span>
+                  <!-- <small> | {{ (tariff.description.length>60)? (tariff.description | slice:0:60)+'..':(tariff.description)
+                    }}</small> -->
+                  <small class="label label-primary linkLable pull-left">
+                    <a [routerLink]="['/order','submit', tariff.tariffName, tariff.id]">همین حالا سفارش دهید &nbsp;&nbsp;
+                      <i class="fa fa-chevron-left"></i>
+                    </a>
+                  </small>
+                </li>
+              </ul>
+            </div>
+
+          <div class="tariffCategories" *ngIf="model.tariffCategories.length > 0">
+            <h3 class="subtitle">مجموعه محصولات چاپی مشابه</h3>
+            <ul class="todo-list m-t ui-sortable">
+              <li *ngFor="let tariffCategory of model.tariffCategories">
+                <span class="m-l-xs text-success">
+                  <a [routerLink]="['/order','category', tariffCategory.title, tariffCategory.id]">{{tariffCategory.title}}</a>
+                </span>
+                <small> | {{ (tariffCategory.description && tariffCategory.description.length>60)? (tariffCategory.description | slice:0:60)+'..':(tariffCategory.description)
+                  }}</small>
+                <small class="label label-primary linkLable pull-left">
+                  <a [routerLink]="['/order','category', tariffCategory.title, tariffCategory.id]">برو به مجموعه &nbsp;&nbsp;
+                    <i class="fa fa-chevron-left"></i>
+                  </a>
+                </small>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--Footer Start-->
+  <app-footer></app-footer>
+  <!--Footer End-->
+  <!-- Facebook Side Block Start -->
+  <div id="facebook" class="fb-left sort-order-1">
+    <div class="facebook_icon">
+      <i class="fa fa-facebook"></i>
+    </div>
+    <div class="fb-page" data-href="https://www.facebook.com/chaptin/" data-small-header="true" data-adapt-container-width="true"
+      data-hide-cover="true" data-show-facepile="true" data-show-posts="false">
+      <div class="fb-xfbml-parse-ignore">
+        <blockquote cite="https://www.facebook.com/chaptin/">
+          <a href="https://www.facebook.com/chaptin/">{{applicationName}}</a>
+        </blockquote>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script>
+      (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+    </script>
+  </div>
+  <!-- Facebook Side Block End -->
+  <!-- Twitter Side Block Start -->
+  <div id="twitter_footer" class="twit-left sort-order-2">
+    <div class="twitter_icon">
+      <i class="fa fa-twitter"></i>
+    </div>
+    <a class="twitter-timeline" href="https://twitter.com/" data-chrome="nofooter noscrollbar transparent" data-theme="light"
+      data-tweet-limit="2" data-related="twitterapi,twitter" data-aria-polite="assertive" data-widget-id="347621595801608192">توییت های @</a>
+    <script>
+      ! function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + "://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, "script", "twitter-wjs");
+
+    </script>
+  </div>
+  <!-- Twitter Side Block End -->
+  <!-- Video Side Block Start -->
+  <div id="video_box" class="vb-right sort-order-1">
+    <div id="video_box_icon">
+      <i class="fa fa-play"></i>
+    </div>
+    <p>
+      <!-- <iframe allowfullscreen="" src="//www.youtube.com/embed/SZEflIVnhH8" height="315" width="560"></iframe> -->
+    </p>
+  </div>
+  <!-- Video Side Block End -->
+  <!-- Custom Side Block Start -->
+  <div id="custom_side_block" class="custom_side_block_right sort-order-2">
+    <div class="custom_side_block_icon">
+      <i class="fa fa-chevron-right"></i>
+    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <h2>بلاک های محتوا</h2>
+          </td>
+        </tr>
+        <tr>
+          <td>برای محتوای خاص میتونیم مورد استفاده قرار بدیم</td>
+        </tr>
+        <tr>
+          <td>
+            <strong>
+              <a href="#">ادامه مطلب</a>
+            </strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Custom Side Block End -->
+</div>

@@ -1,0 +1,26 @@
+<div class="product-thumb">
+  <div class="image">
+    <a [routerLink]="['/order','category',category.id, category.slug]">
+      <img [src]="category.imageAddress" [alt]="category.title" [title]="category.title" class="img-responsive">
+    </a>
+  </div>
+  <div>
+    <div class="caption">
+      <h4>
+        <a [routerLink]="['/order','category',category.id, category.slug]">{{category.title}}</a>
+      </h4>
+      <p class="description" [innerHtml]="category.description"></p>
+      <p class="price">
+        <!-- <span class="price-new">98000 تومان</span>
+          <span class="price-old">120000 تومان</span>
+          <span class="saving">-26%</span>
+          <span class="price-tax">بدون مالیات : 90000 تومان</span>-->
+      </p>
+    </div>
+    <div class="button-group">
+      <button class="btn-primary" [routerLink]="['/order','category',category.id, category.slug]">
+        <span>مشاهده</span>
+      </button>
+    </div>
+  </div>
+</div>

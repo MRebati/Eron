@@ -1,0 +1,136 @@
+/*===================================================================================*/
+/*  12. Tabs
+/*===================================================================================*/
+.nav-tabs > li > a.selected {
+	color:#111;
+	padding-bottom:5px;
+	background:#FFFFFF;
+	border-top: 2px solid #ddd;
+	border-left:2px solid #ddd;
+	border-right:2px solid #ddd;
+	font-weight: bold;
+}
+.nav-tabs {
+	margin-bottom:0px;
+	border-width:2px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	border-width:2px;
+	font-weight:bold;
+}
+.nav-tabs > li { margin-bottom:-2px; }
+.nav-tabs > li > a:hover {
+	border-color:transparent;
+	color:#444;
+}
+.nav-tabs > li > a {
+	border-radius:0px;
+	color:#666;
+}
+.tab-content {
+	padding:15px 15px 10px;
+	margin-bottom: 20px;
+	z-index:2;
+	border:2px solid #ddd;
+	border-top:0px;
+}
+#tab-description ul {
+	margin-left:20px;
+	margin-bottom:15px;
+}
+.tab-sub {
+	position:absolute;
+	right:70px;
+	top:-46px;
+	border:none;
+	padding:0;
+	height:25px;
+	line-height:25px;
+}
+.tab-sub a {
+	padding:0px 7px;
+	font-size:12px;
+}
+.tab-sub a.selected {
+	padding:0px 10px;
+	position:relative;
+	border-width:2px;
+	line-height:24px;
+}
+.tab-sub a.selected:hover {
+	text-decoration:none;
+	cursor:default;
+}
+.tab-sub a:hover { text-decoration:underline; }
+.category-module-content { position:relative; }
+.category-module .tabs {
+	position:absolute;
+	left:70px;
+	top:-46px;
+	height:25px;
+	line-height:25px;
+}
+.category-module .tabs li {
+	float:left;
+	list-style-type:none;
+}
+.category-module .tabs li a {
+	padding:0px 7px;
+	font-size: 16px;
+	display:inline-block;
+	color:#333;
+}
+.category-module .tabs li.active a {
+	position:relative;
+	line-height:24px;
+	color:#111;
+	background:#FFFFFF;
+	border-top: 2px solid #ddd;
+	border-left:2px solid #ddd;
+	border-right:2px solid #ddd;
+	font-weight: bold;
+}
+.category-module .tabs li.active a:hover {
+	text-decoration:none;
+	cursor:default;
+}
+.category-module .tabs li a:hover {
+	text-decoration:underline;
+	color:#004B91;
+}
+.product-tab { margin-bottom:20px; }
+.product-tab .tabs {
+	height:32px;
+	line-height:15px;
+	padding-left:10px;
+	border-bottom:2px solid #ddd;
+	margin-bottom:20px;
+}
+.product-tab .tabs li {
+	float:left;
+	list-style-type:none;
+}
+.product-tab .tabs li a {
+	padding:7px 15px 6px 15px;
+	float:left;
+	font-size:18px;
+	font-weight: normal;
+	text-align: center;
+	text-decoration: none;
+	color: #222;
+	margin-right: 2px;
+	opacity:0.7;
+	border-top:2px solid #fff;
+	border-left:2px solid #fff;
+	border-right:2px solid #fff;
+}
+.product-tab .tabs li.active a {
+	opacity:1;
+	padding-bottom:8px;
+	background: #FFFFFF;
+	border-top:2px solid #ddd;
+	border-left: 2px solid #ddd;
+	border-right:2px solid #ddd;
+}
+.product-tab .deactive, .category-module .deactive { display:none; }
+.addthis_default_style > a { padding:0 }

@@ -1,0 +1,23 @@
+// @import "/assets/styles/css/website/bootstrap-rtl.css",
+//         "/assets/styles/css/website/stylesheet.css",
+//         "/assets/styles/css/website/stylesheet-rtl.css",
+//         "/assets/styles/css/website/stylesheet-skin3.css";
+.down {
+  right: auto;
+  left: 0;
+}
+
+a {
+  margin-left: 16px;
+  margin-right: 0;
+}
+
+a{
+  padding: 5px 12px 5px 0;
+  background: url("/assets/img/website/bullet-dark-rtl.png") no-repeat right 11px;
+}
+
+a:hover, a:hover {
+  margin-left: 16px;
+  margin-right: 0;
+}

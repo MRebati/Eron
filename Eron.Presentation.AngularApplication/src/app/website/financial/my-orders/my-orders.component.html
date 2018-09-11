@@ -1,0 +1,192 @@
+<div class="wrapper-wide">
+  <app-header></app-header>
+  <div id="container">
+    <div class="container">
+      <!-- Breadcrumb Start-->
+      <ul class="breadcrumb">
+        <li>
+          <a routerLink="/">
+            <i class="fa fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a routerLink="cart">سفارشات من</a>
+        </li>
+      </ul>
+      <!-- Breadcrumb End-->
+      <div class="row">
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-12">
+          <div class="clearfix">
+            <h1 class="title">سفارشات من</h1>
+            <div class="tools">
+              <div class="form-group">
+                <select class="form-control minimal" [(ngModel)]="ordertypeFilter" (ngModelChange)="ngOnFilterChange($event)">
+                  <option value="" selected>همه</option>
+                  <option value="0">در حال بررسی</option>
+                  <option value="8">نیاز به صدور فاکتور</option>
+                  <option value="1">در انتظار پرداخت</option>
+                  <option value="2">در حال انجام</option>
+                  <option value="3">در حال ارسال</option>
+                  <option value="4">ارسال شده</option>
+                  <option value="5">تحویل داده شده</option>
+                  <option value="6">لغو شده</option>
+                  <option value="7">مردود شده</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="text" [(ngModel)]="orderNumberFilter" (ngModelChange)="ngOnOrderNumberFilterChange($event)"
+                  placeholder="جستجو کنید" />
+              </div>
+
+              <button class="btn btn-danger" *ngIf="showCancelButton" (click)="onCancelSelection()">لغو سفارشات انتخابی
+                <i class="fa fa-trash"></i>
+              </button>
+
+              <!-- <button class="btn btn-primary" *ngIf="showCancelButton" (click)="onCancelSelection()">لغو سفارشات انتخابی
+                <i class="fa fa-trash"></i>
+              </button> -->
+
+              <button class="btn btn-primary" *ngIf="showInvoiceCreateButton" (click)="onSubmitInvoice()">صدور فاکتور
+                <i class="fa fa-file-text"></i>
+              </button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <td></td>
+                  <td>وضعیت</td>
+                  <td>شماره سفارش</td>
+                  <td>شماره فاکتور</td>
+                  <td>نام تعرفه</td>
+                  <td>هزینه طراحی</td>
+                  <td>تعداد پایه</td>
+                  <td>تعداد کل</td>
+                  <td>قیمت تعرفه</td>
+                  <td>قیمت کل</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of orderItemList | defaultfilter:filterargs | likefilter: orderNumberfilterargs; let index = index">
+                  <td class="text-center">
+                    <input type="checkbox" icheck [(ngModel)]="item.selected" (ngModelChange)="selectionChanged($event)">
+                  </td>
+                  <!-- <td class="text-left">
+                    <badge labelStatus="warning" *ngIf="!item.approved">تایید نشده</badge>
+                    <badge labelStatus="success" *ngIf="item.approved">تایید شده</badge> -->
+                  <td>
+                    <badge [labelStatus]="item.orderStatus | orderstatuscolor">{{item.orderStatus | orderstatus }}</badge>
+                  </td>
+                  <td class="enNumber uppercase"><a [routerLink]="['/orders','details', item.orderNumber]">{{item.orderNumber}}</a></td>
+                  <td class="enNumber uppercase" *ngIf="item.invoiceNumber">{{item.invoiceNumber}}</td>
+                  <td class="enNumber uppercase" *ngIf="!item.invoiceNumber">فاکتوری صادر نشده است</td>
+                  <td>{{item.tariffName}}</td>
+                  <td>
+                    <badge labelStatus="primary" *ngIf="!item.hasDesignOrder">ندارد</badge>
+                    <badge labelStatus="success" *ngIf="item.hasDesignOrder && item.designPrice == 0">در حال بررسی</badge>
+                    <span labelStatus="success" *ngIf="item.hasDesignOrder && item.designPrice != 0"> {{ item.designPrice | priceToman }} </span>
+                  </td>
+                  <td>{{item.quantity / item.count }}</td>
+                  <td>{{item.quantity}}</td>
+                  <td>{{item.price | priceToman}}</td>
+                  <td class="text-right">{{item.finalPrice | priceToman}}</td>
+                </tr>
+                <tr *ngIf="orderItemList.length == 0 && !loading">
+                  <td colspan="10" class="text-center">شما سفارشی ثبت نکرده اید.</td>
+                </tr>
+                <tr *ngIf="orderItemList.length == 0 && loading">
+                  <td colspan="10" class="text-center">در حال بارگزاری...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 class="subtitle">حالا مایلید چه کاری انجام دهید؟</h2>
+          <p>در صورتی که کد تخفیف در اختیار دارید میتوانید از آن در اینجا استفاده کنید.</p>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">استفاده از کوپن تخفیف</h4>
+                </div>
+                <div id="collapse-coupon" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                    <!-- <label class="col-sm-4 control-label" for="input-coupon">کد تخفیف خود را در اینجا وارد کنید</label> -->
+                    <div class="input-group">
+                      <input type="text" name="coupon" value="" placeholder="کد تخفیف خود را در اینجا وارد کنید" id="input-coupon" class="form-control">
+                      <span class="input-group-btn">
+                        <input type="button" value="اعمال کوپن" id="button-coupon" data-loading-text="بارگذاری ..." class="btn btn-primary">
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">استفاده از کارت هدیه</h4>
+                </div>
+                <div id="collapse-voucher" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                    <!-- <label class="col-sm-4 control-label" for="input-voucher">کد کارت هدیه را در اینجا وارد کنید</label> -->
+                    <div class="input-group">
+                      <input type="text" name="voucher" value="" placeholder="کد کارت هدیه را در اینجا وارد کنید" id="input-voucher" class="form-control">
+                      <span class="input-group-btn">
+                        <input type="button" value="اعمال کارت هدیه" id="button-voucher" data-loading-text="بارگذاری ..." class="btn btn-primary">
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5 col-sm-offset-7">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td class="text-right">
+                      <strong>جمع کل [موارد انتخاب شده]:</strong>
+                    </td>
+                    <td class="text-right">{{selectionTotalPrice | priceToman }}</td>
+                  </tr>
+                  <!-- <tr>
+                        <td class="text-right"><strong>کسر هدیه:</strong></td>
+                        <td class="text-right">4000 تومان</td>
+                      </tr>
+                      <tr>
+                        <td class="text-right"><strong>مالیات:</strong></td>
+                        <td class="text-right">11880 تومان</td>
+                      </tr> -->
+                  <tr>
+                    <td class="text-right">
+                      <strong>کل :</strong>
+                    </td>
+                    <td class="text-right">{{totalPrice | priceToman }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="buttons">
+            <div class="pull-left">
+              <a routerLink="/" class="btn btn-default">ادامه خرید</a>
+            </div>
+            <div class="pull-right">
+              <button (click)="onSubmitInvoice()" class="btn btn-primary" [disabled]="selectionTotalPrice == 0">صدور فاکتور برای موارد انتخاب شده</button>
+              <span *ngIf="selectionTotalPrice == 0">برای صدور فاکتور از جدول بالا موارد دلخواه را انتخاب نمائید</span>
+            </div>
+          </div>
+        </div>
+        <!--Middle Part End -->
+      </div>
+    </div>
+  </div>
+  <!--Footer Start-->
+  <app-footer></app-footer>
+  <!--Footer End-->
+</div>
+
+<router-outlet></router-outlet>

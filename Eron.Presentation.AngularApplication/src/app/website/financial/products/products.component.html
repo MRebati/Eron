@@ -1,0 +1,76 @@
+<div class="wrapper-wide">
+  <app-header></app-header>
+  <div id="container">
+    <div class="container">
+      <!-- Breadcrumb Start-->
+      <ul class="breadcrumb">
+        <li>
+          <a href="index.html">
+            <i class="fa fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/products', 'category', categoryName, categoryId]">{{categoryName}}</a>
+        </li>
+      </ul>
+      <!-- Breadcrumb End-->
+      <div class="row">
+        <!--Left Part Start -->
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+
+          <app-categories></app-categories>
+          <h3 *ngIf="bestSellerProducts.length" class="subtitle">پرفروش ها</h3>
+          <div class="side-item">
+            <div *ngFor="let item of bestSellerProducts" class="product-thumb clearfix">
+              <div class="image">
+                <a [routerLink]="['/product',item.productCode, item.name]">
+                  <img [src]="item.defaultImageAddress" [alt]="item.name" [title]="item.name" class="img-responsive">
+                </a>
+              </div>
+              <div class="caption">
+                <h4>
+                  <a [routerLink]="['/product',item.productCode, item.name]">{{item.name}}</a>
+                </h4>
+                <p class="price">
+                  <span class="price-new">{{item.price | priceToman}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <h3 *ngIf="promotedProducts.length" class="subtitle">ویژه</h3>
+          <div class="side-item">
+            <div *ngFor="let item of promotedProducts" class="product-thumb clearfix">
+              <div class="image">
+                <a [routerLink]="['/product',item.productCode, item.name]">
+                  <img [src]="item.defaultImageAddress" [alt]="item.name" [title]="item.name" class="img-responsive">
+                </a>
+              </div>
+              <div class="caption">
+                <h4>
+                  <a [routerLink]="['/product',item.productCode, item.name]">{{item.name}}</a>
+                </h4>
+                <p class="price">
+                  <span class="price-new">{{item.price | priceToman}}</span>
+                  <!-- <span class="price-old">120000 تومان</span>
+                  <span class="saving">-26%</span> -->
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="banner owl-carousel owl-theme" type="topSlider" group="productSideSlider" slider-view>
+          </div>
+        </aside>
+        <!--Left Part End -->
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-9">
+          <h1 class="title">{{categoryName}}</h1>
+          <app-product-list [categoryId]="categoryId"></app-product-list>
+        </div>
+        <!--Middle Part End -->
+      </div>
+    </div>
+  </div>
+  <!--Footer Start-->
+  <app-footer></app-footer>
+  <!--Footer End-->
+</div>

@@ -1,0 +1,144 @@
+<app-bread-crump [BreadCrump]="breadCrump"></app-bread-crump>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ibox">
+        <div class="ibox-title">
+          <h4>افزودن تعرفه</h4>
+        </div>
+        <div class="ibox-content clearfix">
+          <form class="form-horizontal" id="form" [formGroup]="form" (ngSubmit)="onSubmitForm(form.value)">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group" [ngClass]="{'has-error':!form.controls['tariffName'].valid  && form.controls['tariffName'].touched}">
+                  <label class="col-md-3 control-label">نام تعرفه</label>
+
+                  <div class="col-md-9">
+                    <input type="text" class="form-control" name="tariffName" [formControl]="form.controls['tariffName']">
+                  </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error':!form.controls['tariffPrice'].valid  && form.controls['tariffPrice'].touched}">
+                  <label class="col-md-3 control-label">مبلغ تعرفه</label>
+
+                  <div class="col-md-9">
+                    <input type="text" currencyMask [options]="{ prefix: 'ریال', thousands: ',', decimal: '.', precision: 0 }" class="form-control money"
+                      name="tariffPrice" [formControl]="form.controls['tariffPrice']">
+                  </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error':!form.controls['designPrice'].valid  && form.controls['designPrice'].touched}">
+                  <label class="col-md-3 control-label">هزینه طراحی</label>
+
+                  <div class="col-md-9">
+                    <input type="text" currencyMask [options]="{ prefix: 'ریال', thousands: ',', decimal: '.', precision: 0 }" class="form-control money"
+                      name="designPrice" [formControl]="form.controls['designPrice']">
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                <div class="form-group" [ngClass]="{'has-error':!form.controls['customerType'].valid  && form.controls['customerType'].touched}">
+                  <label class="col-md-3 control-label">نوع مشتری</label>
+
+                  <div class="col-md-9">
+                    <select name="customerType" id="customerType" class="form-control minimal" [formControl]="form.controls['customerType']">
+                      <option *ngFor="let customerType of customerTypes" value="{{customerType.value}}">{{customerType.title}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error':!form.controls['tariffCategoryId'].valid  && form.controls['tariffCategoryId'].touched}">
+                  <label class="col-md-3 control-label">مجموعه</label>
+
+                  <div class="col-md-9">
+                    <select name="tariffCategoryId" id="tariffCategoryId" class="form-control minimal" [formControl]="form.controls['tariffCategoryId']">
+                      <option *ngFor="let category of categories" value="{{category.id}}">{{category.title}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error':!form.controls['unitType'].valid  && form.controls['unitType'].touched}">
+                  <label class="col-md-3 control-label">نوع واحد</label>
+
+                  <div class="col-md-9">
+                    <select name="unitType" id="unitType" class="form-control minimal" [formControl]="form.controls['unitType']">
+                      <option *ngFor="let unitType of unitTypes" value="{{unitType.value}}">{{unitType.title}}</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+          </form>
+          <div class="form-horizontal">
+            <div class="row">
+              <div class="col-md-4">
+                <dropzone [config]="dropzoneConfig" [message]="'برای بارگزاری فایل تصویر خود را اینجا بکشید یا کلیک نمایید'" (error)="onUploadError($event)"
+                  (success)="onUploadSuccess($event)" (removedfile)="onRemoveFile($event)"></dropzone>
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <ng-template ngFor let-item [ngForOf]="tariffItems" let-index="index">
+                    <div class="col-md-11">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">نوع آیتم</label>
+
+                            <div class="col-md-9">
+                              <select name="itemType" id="itemType" name="itemType" class="form-control minimal" [(ngModel)]="item.type">
+                                <option *ngFor="let itemType of itemTypes" value="{{itemType.value}}">{{itemType.title}}</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">مقدار آیتم</label>
+
+                            <div class="col-md-9">
+                              <input type="text" class="form-control" name="itemName" [(ngModel)]="item.name">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <button class="btn btn-danger btn-sm pull-left" type="button" (click)="onDeleteItem(index)">
+                        <i class="fa fa-times"></i>
+                      </button>
+                    </div>
+                  </ng-template>
+                </div>
+                <div class="row">
+                  <div class="hr-line-dashted"></div>
+                  <div class="col-md-12 text-left">
+                    <button class="btn btn-success btn-md btn-outline" type="button" (click)="onCreateItem()">ایجاد آیتم جدید</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="hr-line-dashed"></div>
+            <div class="col-md-12 text-left">
+              <a class="btn btn-default btn-md btn-outline" routerLink="/controlpanel/tariff">انصراف</a>
+              <button class="btn btn-primary btn-md btn-outline" [ladda]="submitting" form="form">
+                <i class="fa fa-save"></i> ذخیره
+              </button>
+
+              <!--
+              <button class="btn btn-primary btn-md btn-outline" form="form">
+                <i class="fa fa-save"></i> ذخیره و جدید
+              </button> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

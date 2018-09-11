@@ -1,0 +1,49 @@
+<app-bread-crump [BreadCrump]="breadCrump">
+</app-bread-crump>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ibox">
+        <div class="ibox-title">
+          <h4>همه تعرفه ها</h4>
+        </div>
+        <div class="ibox-content no-padding">
+          <div class="ibox-content">
+            <table class="table table-stripped tablet breakpoint">
+              <thead>
+                <tr>
+                  <th>نام تعرفه</th>
+                  <th>قیمت تعرفه</th>
+                  <th>عملیات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of tariffList; let index = index">
+                  <td>{{item.tariffName}}</td>
+                  <td>{{item.tariffPrice | priceToman}}</td>
+                  <td>
+                    <div class="btn-group">
+                      <button class="btn-white btn btn-xs" (click)="onDelete(item)">حذف</button>
+                      <button class="btn-white btn btn-xs" (click)="onView(item)">نمایش</button>
+                      <button class="btn-white btn btn-xs" (click)="onUpdate(item)">ویرایش</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <!-- <tfoot>
+                <tr>
+                  <td colspan="6" class="footable-visible">
+                    <pagination-controls class="" (pageChange)="onPageChange($event)" previousLabel="قبلی" nextLabel="بعدی" screenReaderPaginationLabel="Pagination"
+                      screenReaderPageLabel="صفحه" screenReaderCurrentLabel="صفحه فعلی شما" directionLinks="true">
+                    </pagination-controls>
+                  </td>
+                </tr>
+              </tfoot> -->
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<h3 class="subtitle">دسته ها</h3>
+<div class="box-category">
+  <ul id="cat_accordion">
+    <li *ngFor="let item of list">
+      <a [routerLink]="['/products','category',item.title, item.id]">{{item.title}}</a>
+      <span class="down"></span>
+      <ul *ngIf="item.children != null">
+        <li *ngFor="let child of item.children" app-category-item [item]="child">
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,8 @@
+<button class="btn btn-xs btn-warning" data-action="custom" [routerLink]="['/controlpanel','productcategories','update', item.id]"><i class="fa fa-edit"></i></button>
+<button class="btn btn-xs btn-info" data-action="custom" [routerLink]="['/controlpanel','productcategories','details',item.id]"><i class="fa fa-info"></i></button>
+<button class="btn btn-xs btn-danger" data-action="custom" (click)="onDelete()"><i class="fa fa-trash"></i></button>
+<div class="dd-handle">
+  {{item.id + ' - ' +item.title}}</div>
+<ol class="dd-list" *ngIf="itemList != null">
+  <li class="dd-item" *ngFor="let child of itemList" [attr.data-id]="child.id" [item]="child" [itemList]="child.children" app-product-category-list-item></li>
+</ol>

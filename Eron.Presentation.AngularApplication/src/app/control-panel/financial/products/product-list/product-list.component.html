@@ -1,0 +1,83 @@
+<app-bread-crump [BreadCrump]="breadCrump">
+</app-bread-crump>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ibox-content m-b-sm border-bottom">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label class="control-label" for="product_name">نام محصول</label>
+              <input type="text" [(ngModel)]="filter.productName" (ngModelChange)="onFilterChange()" id="product_name" name="product_name" value="" placeholder="نام محصول"
+                class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label class="control-label" for="productCode">کد محصول</label>
+              <input type="text" [(ngModel)]="filter.productCode" (ngModelChange)="onFilterChange()" id="productCode" name="productCode" value="" placeholder="کد محصول" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label class="control-label" for="status">وضعیت</label>
+              <select name="status" [(ngModel)]="filter.availability" (ngModelChange)="onFilterChange()" id="status" class="form-control minimal">
+                <option value="" selected="">همه</option>
+                <option value="true">موجود</option>
+                <option value="false">نا موجود</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <div class="ibox">
+        <div class="ibox-content">
+
+          <table class="table table-stripped tablet breakpoint">
+            <thead>
+              <tr>
+                <th>نام محصول</th>
+                <th>کد محصول</th>
+                <th>قیمت محصول</th>
+                <th>وضعیت</th>
+                <th>عملیات</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of productItemList.result | paginate: { itemsPerPage: filter.pageSize, currentPage: filter.pageNumber, totalItems: productItemList.totalCount }; let index = index">
+                <td>{{item.name}}</td>
+                <td class="enNumber uppercase">{{item.productCode}}</td>
+                <td>{{item.price | priceToman}}</td>
+                <td>
+                  <badge *ngIf="item.existsInShop" labelStatus="primary">موجود</badge>
+                  <badge *ngIf="!item.existsInShop" labelStatus="danger">نا موجود</badge>
+                </td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn-white btn btn-xs" [routerLink]="['/controlpanel', 'products', 'details', item.productCode]">نمایش</button>
+                    <button class="btn-white btn btn-xs" (click)="onUpdate(item)">ویرایش</button>
+                    <button class="btn-white btn btn-xs" (click)="onDelete(item)">حذف</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6" class="footable-visible">
+                  <pagination-controls class="" (pageChange)="onPageChange($event)" previousLabel="قبلی" nextLabel="بعدی" screenReaderPaginationLabel="Pagination"
+                    screenReaderPageLabel="صفحه" screenReaderCurrentLabel="صفحه فعلی شما" directionLinks="true">
+                  </pagination-controls>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

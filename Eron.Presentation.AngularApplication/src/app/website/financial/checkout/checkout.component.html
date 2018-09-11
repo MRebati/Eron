@@ -1,0 +1,339 @@
+<div class="wrapper-wide">
+  <app-header></app-header>
+  <div id="container">
+
+
+    <div class="container">
+      <!-- Breadcrumb Start-->
+      <ul class="breadcrumb">
+        <li>
+          <a routerLink="/">
+            <i class="fa fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/cart">سبد خرید</a>
+        </li>
+        <li>
+          <a routerLink="/checkout">تسویه حساب</a>
+        </li>
+      </ul>
+      <!-- Breadcrumb End-->
+      <div class="row">
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-12">
+          <h1 class="title">تسویه حساب</h1>
+          <div class="row">
+            <div class="col-sm-4">
+              <!-- <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <i class="fa fa-sign-in"></i> یک حساب کاربری ساخته و یا به حساب خود وارد شوید</h4>
+                </div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" value="register" name="account"> ثبت نام حساب کاربری</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" checked="checked" value="guest" name="account"> تسویه حساب مهمان</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" value="returning" name="account"> مشتری قبلی</label>
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="panel panel-default" *ngIf="noCompleteUserDetails">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <i class="fa fa-user"></i> اطلاعات شخصی شما</h4>
+                </div>
+                <div class="panel-body">
+                  <fieldset id="account">
+                    <div class="form-group required">
+                      <label for="input-payment-firstname" class="control-label">نام</label>
+                      <input type="text" class="form-control" id="input-payment-firstname" placeholder="نام" value="" name="firstname">
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-payment-lastname" class="control-label">نام خانوادگی</label>
+                      <input type="text" class="form-control" id="input-payment-lastname" placeholder="نام خانوادگی" value="" name="lastname">
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-payment-email" class="control-label">آدرس ایمیل</label>
+                      <input type="text" class="form-control" id="input-payment-email" placeholder="آدرس ایمیل" value="" name="email">
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-payment-telephone" class="control-label">شماره تلفن</label>
+                      <input type="text" class="form-control" id="input-payment-telephone" placeholder="شماره تلفن" value="" name="telephone">
+                    </div>
+                    <div class="form-group">
+                      <label for="input-payment-fax" class="control-label">فکس</label>
+                      <input type="text" class="form-control" id="input-payment-fax" placeholder="فکس" value="" name="fax">
+                    </div>
+                  </fieldset>
+                </div>
+              </div> -->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <i class="fa fa-book"></i> آدرس</h4>
+                </div>
+                <div class="panel-body">
+                  <fieldset id="address" class="required">
+                    <div class="form-group">
+                      <label for="input-payment-company" class="control-label">شرکت</label>
+                      <input type="text" [(ngModel)]="user.companyName" class="form-control" id="input-payment-company" placeholder="شرکت" value="" name="company">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="input-payment-firstName" class="control-label">نام</label>
+                      <input type="text" [(ngModel)]="user.firstName" class="form-control" id="input-payment-firstName" placeholder="نام" value="" name="firstName">
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-payment-lastName" class="control-label">نام خانوادگی</label>
+                      <input type="text" [(ngModel)]="user.lastName" class="form-control" id="input-payment-lastName" placeholder="نام خانوادگی" value="" name="lastName">
+                    </div>
+
+                    <div class="form-group required">
+                      <label for="input-payment-address" class="control-label">آدرس </label>
+                      <input type="text" [(ngModel)]="user.address" class="form-control" id="input-payment-address" placeholder="آدرس" value="" name="address">
+                    </div>
+
+                    <div class="form-group required">
+                      <label for="input-payment-postcode" class="control-label">کد پستی</label>
+                      <input type="text" [(ngModel)]="user.postalCode" class="form-control" id="input-payment-postcode" placeholder="کد پستی" value="" name="postcode">
+                    </div>
+
+                    <div class="form-group required">
+                      <label for="input-country" class="control-label">استان</label>
+                      <select [(ngModel)]="user.provinceName" (ngModelChange)="provinceChanged()" class="form-control minimal" id="input-country"
+                        name="country_id">
+                        <option value=""> --- لطفا انتخاب کنید --- </option>
+                        <option *ngFor="let provinceItem of provinceList" [value]="provinceItem.name">{{provinceItem.name}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group required">
+                      <label for="input-zone" class="control-label">شهر</label>
+                      <select [(ngModel)]="user.cityName" class="form-control  minimal" id="input-zone" name="zone_id">
+                        <option value=""> --- لطفا انتخاب کنید --- </option>
+                        <option *ngFor="let cityItem of cityList" [value]="cityItem.name">{{cityItem.name}}</option>
+                      </select>
+                    </div>
+                    <!-- <div class="checkbox">
+                      <label>
+                        <input type="checkbox" checked="checked" value="1" name="shipping_address"> آدرس فاکتور با آدرس محل تحویل یکسان است.</label>
+                    </div> -->
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="row">
+                <!-- <div class="col-sm-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-truck"></i> شیوه ی تحویل</h4>
+                    </div>
+                    <div class="panel-body">
+                      <p>لطفا یک شیوه حمل و نقل انتخاب کنید.</p>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" checked="checked" name="ارسال رایگان"> رایگان - 0 تومان</label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="Flat Shipping Rate"> هزینه ی ثابت - 8000 تومان</label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="Per Item Shipping Rate"> ارسال هر آیتم به صورت جداگانه - 150000 تومان</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-credit-card"></i> شیوه پرداخت</h4>
+                    </div>
+                    <div class="panel-body">
+                      <p>لطفا یک شیوه پرداخت برای سفارش خود انتخاب کنید.</p>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" checked="checked" name="Cash On Delivery"> پرداخت هنگام تحویل</label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="Bank Transfer"> واریز به حساب</label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="Paypal"> پی پال</label>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                <div class="col-sm-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-ticket"></i> استفاده از کوپن تخفیف</h4>
+                    </div>
+                    <div class="panel-body">
+                      <label for="input-coupon" class="col-sm-3 control-label">کد تخفیف خود را وارد کنید</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="input-coupon" placeholder="کد تخفیف خود را در اینجا وارد کنید" value="" name="coupon">
+                        <span class="input-group-btn">
+                          <input type="button" (click)="checkCoupon()" class="btn btn-primary" data-loading-text="بارگذاری ..." id="button-coupon"
+                            value="اعمال کوپن">
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-gift"></i> استفاده از کارت هدیه</h4>
+                    </div>
+                    <div class="panel-body">
+                      <label for="input-voucher" class="col-sm-3 control-label">کد کارت هدیه خود را وارد کنید</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="input-voucher" placeholder="کد کارت هدیه خود را در اینجا وارد کنید ..." value=""
+                          name="voucher">
+                        <span class="input-group-btn">
+                          <input type="button" (click)="checkVoucher()" class="btn btn-primary" data-loading-text="بارگذاری ..." id="button-voucher"
+                            value="اعمال کارت هدیه">
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-shopping-cart"></i> سبد خرید</h4>
+                    </div>
+                    <div class="panel-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <td class="text-center">تصویر</td>
+                              <td class="text-left">نام محصول</td>
+                              <td class="text-left">تعداد</td>
+                              <td class="text-right">قیمت واحد</td>
+                              <td class="text-right">کل</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of cartItemList; let index = index">
+                              <td class="text-center">
+                                <a [routerLink]="['/product', item.productCode, item.productName | slug]">
+                                  <img [src]="item.productImageAddress" style="width:50px" alt="{{item.productName}}" title="{{item.productName}}"
+                                    class="img-thumbnail">
+                                </a>
+                              </td>
+                              <td class="text-left">
+                                <a [routerLink]="['/product', item.productCode, item.productName | slug]">{{item.productName}}</a>
+                                <br>
+                                <!-- <small>امتیازات خرید: 1000</small></td> -->
+                                <td class="text-left">
+                                  <div class="input-group btn-block quantity">
+                                    <input type="number" name="quantity" [(ngModel)]="item.count" (change)="onCountChange(item)" class="form-control">
+                                    <span class="input-group-btn">
+                                      <!-- <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="بروزرسانی"><i class="fa fa-refresh"></i></button> -->
+                                      <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" (click)="onRemoveItemFromCart(item.id, index)"
+                                        data-original-title="حذف">
+                                        <i class="fa fa-times-circle"></i>
+                                      </button>
+                                    </span>
+                                  </div>
+                                </td>
+                                <td class="text-right">{{item.productPrice | priceToman }}</td>
+                                <td class="text-right">{{item.productPrice * item.count | priceToman}}</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td class="text-left" colspan="4">
+                                <strong>جمع کل:</strong>
+                              </td>
+                              <td class="text-right">{{totalPrice | priceToman}}</td>
+                            </tr>
+                            <!-- <tr>
+                              <td class="text-right" colspan="4">
+                                <strong>هزینه ارسال ثابت :</strong>
+                              </td>
+                              <td class="text-right">5000 تومان</td>
+                            </tr>
+                            <tr>
+                              <td class="text-right" colspan="4">
+                                <strong>کسر هدیه:</strong>
+                              </td>
+                              <td class="text-right">4000 تومان</td>
+                            </tr>
+                            <tr>
+                              <td class="text-right" colspan="4">
+                                <strong>مالیات:</strong>
+                              </td>
+                              <td class="text-right">15100 تومان</td>
+                            </tr>
+                            <tr>
+                              <td class="text-right" colspan="4">
+                                <strong>کل :</strong>
+                              </td>
+                              <td class="text-right">{{totalPrice | priceToman}}</td>
+                            </tr>-->
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-pencil"></i> افزودن توضیح برای سفارش.</h4>
+                    </div>
+                    <div class="panel-body">
+                      <textarea rows="4" class="form-control" id="confirm_comment" name="comments"></textarea>
+                      <br>
+                      <label class="control-label" for="confirm_agree">
+                        <input type="checkbox" icheck [ngModel]="readTerms" (ngModelChange)="onReadTermChange($event)" required="" class="validate required"
+                          id="confirm_agree" name="confirm agree">
+                        <span>
+                          <a class="agree" href="/terms" target="_blank">
+                            <b>شرایط و قوانین</b>
+                          </a> را خوانده ام و با آنها موافق هستم.</span>
+                      </label>
+                      <div class="buttons">
+                        <div class="pull-right">
+                          <input type="button" (click)="onSubmit()" class="btn btn-primary" [disabled]="!readTerms" id="button-confirm" value="تایید سفارش و صدور فاکتور">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Middle Part End -->
+      </div>
+    </div>
+
+  </div>
+  <!--Footer Start-->
+  <app-footer></app-footer>
+  <!--Footer End-->
+  <!-- Facebook Side Block Start -->
+
+</div>

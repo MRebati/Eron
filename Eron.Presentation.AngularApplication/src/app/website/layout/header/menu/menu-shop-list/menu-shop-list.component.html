@@ -1,0 +1,13 @@
+<ul>
+    <li *ngFor="let item of parentProductCategories">
+      <a [routerLink]="['/products','category',item.title,item.id]">{{item.title}}
+        <span *ngIf="item.children.length">&rsaquo;</span>
+      </a>
+      <div *ngIf="item.children.length" class="dropdown-menu">
+        <ul>
+          <li *ngFor="let child of item.children" [item]="child" app-menu-shop-list-item>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>

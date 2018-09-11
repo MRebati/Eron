@@ -1,0 +1,23 @@
+.product-grid {
+  position: relative;
+  text-align: center;
+  vertical-align: top;
+  background: #fff;
+  padding: 7px 7px 7px 7px;
+  border: 3px solid transparent;
+  margin-bottom: 15px;
+  height: 300px;
+  border: 1px solid #ccc;
+  border-top-color: rgb(204, 204, 204);
+  border-right-color: rgb(204, 204, 204);
+  border-bottom-color: rgb(204, 204, 204);
+  border-left-color: rgb(204, 204, 204);
+  border-radius: 17px;
+  background: #eee;
+  transition: all ease 0.5s;
+}
+
+.product-grid:hover {
+  border-color: #ccc;
+  box-shadow: 0 5px 32px rgba(0, 0, 0, 0.2);
+}

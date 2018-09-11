@@ -1,0 +1,34 @@
+<div class="product-layout product-grid col-lg-3 col-md-3 col-sm-4 col-xs-12">
+  <div class="product-thumb">
+    <div class="image">
+      <a [routerLink]="['/product',item.productCode, item.name.replace(' ','-')]">
+        <img [src]="item.defaultImageAddress" [alt]="item.name" [title]="item.name" class="img-responsive">
+      </a>
+    </div>
+    <div>
+      <div class="caption">
+        <h4>
+          <a [routerLink]="['/product',item.productCode, item.name.replace(' ','-')]">{{item.name}}</a>
+        </h4>
+        <p class="description" [innerHtml]="item.shortDescription"></p>
+        <p class="price"> {{ item.price | priceToman }} </p>
+      </div>
+      <div class="button-group">
+        <button class="btn-primary" type="button" (click)="onAddToCart(item)">
+          <span>افزودن به سبد</span>
+        </button>
+        <div class="add-to-links">
+          <button type="button" attr.data-toggle="tooltip" title="" (click)="onAddToWishList(item)" attr.data-original-title="افزودن به علاقه مندی ها">
+            <i class="fa fa-heart"></i>
+            <span>افزودن به علاقه مندی ها</span>
+          </button>
+          <!-- <button type="button" attr.data-toggle="tooltip" title="" (click)="onAddToCompareList(item)" attr.data-original-title="مقایسه این محصول">
+            <i class="fa fa-exchange"></i>
+            <span>مقایسه این محصول</span>
+          </button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<span *ngIf="(index + 1) / 4 == 0" class="clearfix visible-lg-block"></span>

@@ -1,0 +1,7 @@
+<a [routerLink]="['/products','category',item.title, item.id]">{{item.title}}</a>
+<span class="down"></span>
+<ul *ngIf="item.children != null">
+    <li *ngFor="let child of item.children" app-category-item [item]="child">
+
+    </li>
+</ul>

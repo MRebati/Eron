@@ -1,0 +1,25 @@
+<li>
+  <a class="home_link" title="خانه" routerLink="/">
+    <span>خانه</span>
+  </a>
+</li>
+<li class="dropdown">
+  <a>فروشگاه</a>
+  <div class="dropdown-menu" app-menu-shop-list>
+  </div>
+</li>
+
+<li *ngFor="let menuItem of menuList" [ngClass]="{ 'dropdown': menuItem.children.length }">
+  <a *ngIf="!menuItem.children.length" [routerLink]="menuItem.url">{{menuItem.linkText}}</a>
+  <a *ngIf="menuItem.children.length">{{menuItem.linkText}}</a>
+  <span *ngIf="menuItem.children.length" class="submore"></span>
+  <div *ngIf="menuItem.children.length" class="dropdown-menu">
+    <ul>
+      <li *ngFor="let child of menuItem.children" app-menu-list-item [item]="child">
+      </li>
+    </ul>
+  </div>
+</li>
+<li class="custom-link-right">
+  <a routerLink="/order">سفارش محصولات چاپی</a>
+</li>

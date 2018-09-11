@@ -1,0 +1,119 @@
+<div class="wrapper-wide">
+  <app-header></app-header>
+  <div id="container">
+
+
+    <div class="container">
+      <!-- Breadcrumb Start-->
+      <ul class="breadcrumb">
+        <li>
+          <a routerLink="/">
+            <i class="fa fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/order">سفارش</a>
+        </li>
+        <li>
+          <a [routerLink]="['/order', 'category', categoryId, category.slug]">{{ category.title }}</a>
+        </li>
+        <li>
+          <a [routerLink]="['/order', 'submit', tariffId, tariff.tariffName | slug]">{{ tariff.tariffName }}</a>
+        </li>
+      </ul>
+      <!-- Breadcrumb End-->
+      <div class="row">
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-12" *ngIf="!loading">
+          <h1 class="title">سفارش دهید</h1>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="product-layout product-list col-xs-12">
+                <div class="product-thumb">
+                  <div class="image">
+                    <a [routerLink]="['/order', 'submit', tariffId, tariff.tariffName | slug]">
+                      <img *ngIf="tariff.imageAddress" [src]="tariff.imageAddress" [alt]="tariff.tariffName" [title]="tariff.tariffName" class="img-responsive">
+                    </a>
+                  </div>
+                  <div style="display: grid;">
+                    <div class="caption">
+                      <h4>
+                        <a [routerLink]="['/order', 'submit', tariffId, tariff.tariffName | slug]">{{tariff.tariffName}}</a>
+                      </h4>
+                      <dl *ngFor="let item of tariff.tariffItems" class="dl-horizontal description">
+                        <dt>{{ item.typeName }}</dt>
+                        <dd>{{ item.name }}</dd>
+                      </dl>
+                      <div class="row m-t-md ">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <textarea [(ngModel)]="orderModel.description" class="form-control" placeholder="توضیحات سفارش"></textarea>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="designRequest">
+                              <input type="checkbox" icheck id="designRequest" [(ngModel)]="orderModel.hasDesignOrder" (ngModelChange)="onOrderDesignChange()" name="designRequest" value="true"> سفارش طراحی نیز دارد
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row m-t-md">
+                        <div class="col-md-12">
+                          <p class="price pull-right">
+                            <span class="price-new">مبلغ قابل پرداخت: {{finalPrice | priceToman}}</span>
+                            <span class="price-tax">قیمت واحد: {{tariff.tariffPrice | priceToman}}</span>
+                            <span *ngIf="orderModel.hasDesignOrder" class="price-tax">هزینه طراحی: {{tariff.designPrice | priceToman}}</span>
+                          </p>
+                          <div class="button-group pull-left">
+                            <button class="btn-primary" (click)="onSubmit()">
+                              <span>سفارش دهید</span>
+                            </button>
+                            <!-- <span *ngIf="!authenticated">برای ثبت سفارش به اکانت کاربری خود وارد شوید</span> -->
+                            <div class="count">
+                              <div class="qty">
+                                <label class="control-label" for="input-quantity">{{ tariff.unitTypeTitle }}</label>
+                                <input type="text" [value]="quantity" readonly name="quantity" id="input-quantity" class="form-control">
+                                <a type="button" class="qtyBtn plus" (click)="onAddQuantity()">+</a>
+                                <br>
+                                <a type="button" class="qtyBtn mines" (click)="onReduceQuantity()">-</a>
+                                <div class="clear"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-12">
+              <dropzone [message]="'برای بارگزاری فایل های خود را اینجا بکشید یا کلیک نمایید'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"
+                (removedfile)="onRemoveFile($event)"></dropzone>
+            </div>
+            <div class="col-md-12" *ngIf="fileList.length != 0">
+              <div class="file-list-wrapper">
+                <h4>فایل های ارسالی</h4>
+                <div class="" *ngFor="let item of fileList">
+                  <img [src]="item.imageAddress" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Middle Part End -->
+      </div>
+    </div>
+
+  </div>
+  <!--Footer Start-->
+  <app-footer></app-footer>
+  <!--Footer End-->
+  <!-- Facebook Side Block Start -->
+
+</div>
+<app-modal-login #loginModal></app-modal-login>

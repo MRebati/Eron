@@ -1,0 +1,201 @@
+/*===================================================================================*/
+/*  16. Footer
+/*===================================================================================*/
+
+/**===== 16.1. Footer Links =====**/
+#footer .fpart-first {
+	background-color:#f3f3f3;
+	color:#444;
+	padding-top:50px;
+	padding-bottom:50px;
+}
+#footer .fpart-first a { color:#888; }
+#footer .fpart-first a:hover {
+	color:#3e7cb4;
+	text-decoration:none;
+}
+#footer .fpart-first ul { padding:0; }
+#footer .fpart-second {
+	background-color:#fff;
+	color:#666;
+	padding:25px 0px 0px
+}
+#footer .fpart-second a { color:#3e7cb4; }
+#footer .fpart-second a:hover {
+	color:#3e7cb4;
+	text-decoration:none;
+}
+#footer .custom-text { padding:0px 0px 25px; }
+#footer .custom-text p { margin:0; }
+#footer h5 {
+	color:#000;
+	font-size: 19px;
+	margin:0px 0 15px 0;
+	padding:0px 0px 7px 0px;
+	font-weight:normal;
+}
+#footer .column ul li { list-style-type:none; }
+#footer .column a {
+	text-decoration: none;
+	display:block;
+	padding:3px 0px;
+	line-height:18px;
+	font-size: 16px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+#footer .column a:hover {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+/**===== 16.2. Contact Block =====**/
+#footer .contact ul li {
+	font-size: 16px;
+	list-style-type:none;
+	line-height:20px;
+}
+#footer .contact > ul > li > .fa { margin-right:10px; }
+#footer .contact > ul > li > .fa-map-marker { font-size:18px; }
+#footer .contact > ul > li > .fa-phone { font-size:18px; }
+#footer .contact > ul > li > .fa-envelope { font-size:15px; }
+#footer .contact ul li + li { margin-top:12px; }
+#footer .contact ul li.email a { text-decoration:none; }
+#footer .contact ul li a {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+#footer .contact ul li a:hover {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	text-decoration:none;
+}
+/**===== 16.3. Payments Types =====**/
+#footer .payments_types {
+	text-align:center;
+	padding:0px 0 25px 0;
+}
+#footer .payments_types img {
+	display:inline-block;
+	margin:0px 3px 3px 3px;
+	vertical-align:middle;
+	-webkit-transition:all 0.3s ease-in-out;
+	-moz-transition:all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+#footer .payments_types img:hover {
+	opacity:0.7;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+/**===== 16.4. Social Icon =====**/
+#footer .social {
+	margin:0;
+	text-align:right;
+	padding:0px;
+}
+#footer .social a {
+	float:left;
+	margin:0px 0 0px 10px;
+}
+#footer .social a img {
+	display:block;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+#footer .social a img:hover {
+	opacity:0.7;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+/**===== 16.5. Powered by Text =====**/
+#footer #powered {
+	line-height:20px;
+	padding:0px 0 25px;
+	margin-bottom:25px;
+	border-bottom:1px solid #E8E8E8;
+}
+#footer #powered a {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+#footer #powered a:hover {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+#footer .powered_text { padding-top:6px; }
+#footer .powered_text p {
+	line-height:18px;
+	margin:0;
+}
+/**===== 16.6. Back To Top =====**/
+#back-top { display:none; }
+#back-top a {
+	position:fixed;
+	bottom:0px;
+	right:10px;
+	background-color:rgba(0, 0, 0, 0.2);
+	width:45px;
+	height:30px;
+	text-align:center;
+	color:#fff;
+	display:block;
+	font-size:20px;
+	line-height:28px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+#back-top a:hover {
+	background-color:#3e7cb4;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+/*===================================================================================*/
+/*  Footer Custom Skin
+/*===================================================================================*/
+#footer .fpart-first { background-color:#191919; }
+#footer .fpart-first, #footer .fpart-first a { color:#999; }
+#footer .fpart-first a:hover { color:#cca548; }
+#footer h5 {color:#fff;font-family: iranyekan(fanum);}
+#footer #powered { border-bottom-color:#222; }
+#footer .fpart-second {
+	color:#666;
+	background-color:#111;
+}
+#footer .fpart-second a { color:#999; }
+#footer .fpart-second a:hover { color:#cca548; }

@@ -1,0 +1,136 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="ibox">
+      <div class="ibox-header">
+        <h4 class="ibox-title">همه سفارشات</h4>
+      </div>
+      <div class="ibox-content">
+        <div class="row">
+          <div class="col-md-3 m-b-xs">
+            <select [(ngModel)]="filter.orderStatus" (ngModelChange)="onOrderStatusFilterChange()" class="input-sm form-control input-s-sm inline minimal">
+              <option value="" selected>همه</option>
+              <option value="0">در حال بررسی</option>
+              <option value="8">نیاز به صدور فاکتور</option>
+              <option value="1">در انتظار پرداخت</option>
+              <option value="2">در حال انجام</option>
+              <option value="3">در حال ارسال</option>
+              <option value="4">ارسال شده</option>
+              <option value="5">تحویل داده شده</option>
+              <option value="6">لغو شده</option>
+              <option value="7">مردود شده</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-primary btn-sm" (click)="changeStatusModal.open()">تغییر وضعیت</button>
+          </div>
+          <div class="col-sm-4 m-b-xs">
+            <div data-toggle="buttons" class="btn-group">
+              <label class="btn btn-sm btn-white active" (click)="onDatePeriodFilterChange(0)">
+                <input type="radio" id="option1" name="options"> روز</label>
+              <label class="btn btn-sm btn-white" (click)="onDatePeriodFilterChange(1)">
+                <input type="radio" id="option2" name="options"> هفته </label>
+              <label class="btn btn-sm btn-white" (click)="onDatePeriodFilterChange(2)">
+                <input type="radio" id="option3" name="options"> ماه </label>
+              <label class="btn btn-sm btn-white" (click)="onDatePeriodFilterChange(3)">
+                <input type="radio" id="option4" name="options"> سال </label>
+              <label class="btn btn-sm btn-white" (click)="onDatePeriodFilterChange(4)">
+                <input type="radio" id="option5" name="options"> همه </label>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <input [(ngModel)]="filter.orderNumber" (ngModelChange)="onOrderNumberFilterChange()" type="text" placeholder="جستجو" class="form-control">
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <td class="text-center"></td>
+                <td class="">وضعیت</td>
+                <!-- <td></td> -->
+                <td class="">شماره سفارش</td>
+                <td>تاریخ ثبت سفارش</td>
+                <td class="">نام تعرفه</td>
+                <td class="">هزینه طراحی</td>
+                <td class="">تعداد کل</td>
+                <td class="">قیمت کل</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of orderItemList.result | paginate: { itemsPerPage: filter.pageSize, currentPage: pageNumber, totalItems: orderItemList.totalCount }; let index = index">
+                <td class="text-center">
+                  <input type="checkbox" icheck [(ngModel)]="item.selected" (click)="selectionChanged($event)">
+                </td>
+                <td>
+                  <badge [labelStatus]="item.orderStatus | orderstatuscolor">{{item.orderStatus | orderstatus }}</badge>
+                </td>
+                <!-- <td>
+                  <span class="pie">8,{{item.orderStatus}}</span>
+                </td> -->
+                <td class="enNumber uppercase">
+                  <a [routerLink]="['/controlpanel','orders','details',item.orderNumber]">{{item.orderNumber}}</a>
+                </td>
+                <td>{{item.createDateTime | jalali}}</td>
+                <td>{{item.tariffName}}</td>
+                <td>
+                  <badge labelStatus="primary" *ngIf="!item.hasDesignOrder">ندارد</badge>
+                  <badge labelStatus="success" *ngIf="item.hasDesignOrder && item.designPrice == 0">در حال بررسی</badge>
+                  <span labelStatus="success" *ngIf="item.hasDesignOrder && item.designPrice != 0"> {{ item.designPrice | priceToman }} </span>
+                </td>
+                <td>{{item.quantity}}</td>
+                <td class="text-right">{{item.finalPrice | priceToman}}</td>
+              </tr>
+              <tr *ngIf="orderItemList == null || orderItemList.result == 0">
+                <td colspan="9" class="text-center">با فیلترهای بالا سفارشی یافت نشد</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <pagination-controls class="" (pageChange)="onPageChange($event)" previousLabel="قبلی" nextLabel="بعدی" screenReaderPaginationLabel="Pagination"
+              screenReaderPageLabel="صفحه" screenReaderCurrentLabel="صفحه فعلی شما" directionLinks="true">
+            </pagination-controls>
+          </div>
+        </div>
+        <!-- <ng2-smart-table [settings]="tableSettings" [source]="source"></ng2-smart-table> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<modal #changeStatusModal
+  title="تغییر وضعیت سفارشات"
+  cancelButtonLabel="لغو"
+  submitButtonLabel="ذخیره"
+  modalClass=""
+  [closeOnEscape]="true"
+  [closeOnOutsideClick]="true" (onSubmit)="onOrderStatusChange()">
+
+  <modal-header>
+  </modal-header>
+
+  <modal-content>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <select [(ngModel)]="orderStatusChangeId" class="form-control minimal">
+              <option value="0">در حال بررسی</option>
+              <option value="2">در حال انجام</option>
+              <option value="3">در حال ارسال</option>
+              <option value="4">ارسال شده</option>
+              <option value="5">تحویل داده شده</option>
+              <option value="7">مردود شده</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" placeholder="توضیحات" [(ngModel)]="orderStatusChangeDescription"></textarea>
+        </div>
+      </div>
+    </div>
+  </modal-content>
+
+  <modal-footer>
+  </modal-footer>
+
+</modal>

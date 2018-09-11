@@ -1,0 +1,203 @@
+<app-bread-crump [BreadCrump]="breadCrump"></app-bread-crump>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tabs-container">
+        <ul class="nav nav-tabs ">
+          <li class="active">
+            <a data-toggle="tab" href="#tab-1" aria-expanded="true">اطلاعات عمومی محصول</a>
+          </li>
+          <li class="">
+            <a data-toggle="tab" href="#tab-2" aria-expanded="false">خصوصیات محصول</a>
+          </li>
+          <li class="">
+            <a data-toggle="tab" href="#tab-3" aria-expanded="false">تصاویر محصول</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div id="tab-1" class="tab-pane active">
+            <div class="panel-body">
+              <form class="form-horizontal" id="form" [formGroup]="form" (ngSubmit)="onSubmitForm(form.value)">
+
+                <input type="hidden" name="formToken" [(ngModel)]="formToken" [formControl]="form.controls['formToken']" />
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group" [ngClass]="{'has-error':!form.controls['productName'].valid  && form.controls['productName'].touched}">
+                      <label class="col-md-3 control-label">نام کالا</label>
+
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" name="productName" [formControl]="form.controls['productName']">
+                      </div>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{'has-error':!form.controls['productPrice'].valid  && form.controls['productPrice'].touched}">
+                      <label class="col-md-3 control-label">ارزش کالا</label>
+
+                      <div class="col-md-9">
+                        <input type="text" class="form-control money" currencyMask [options]="{ prefix: 'ریال', thousands: ',', decimal: '.', precision: 0 }"
+                          name="productPrice" [formControl]="form.controls['productPrice']">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+
+                    <div class="form-group" [ngClass]="{'has-error':!form.controls['productCode'].valid  && form.controls['productCode'].touched}">
+                      <label class="col-md-3 control-label">شناسه کالا</label>
+
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" name="productCode" [formControl]="form.controls['productCode']">
+                      </div>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{'has-error':!form.controls['productCategoryId'].valid  && form.controls['productCategoryId'].touched}">
+                      <label class="col-md-3 control-label">مجموعه</label>
+
+                      <div class="col-md-9">
+                        <select id="productCategoryId" name="productCategoryId" class="form-control minimal" [formControl]="form.controls['productCategoryId']">
+                          <option *ngFor="let category of categories" value="{{category.id}}">{{category.id + '- ' +category.title}}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-12">
+
+                    <div class="form-group">
+                      <div class="col-md-2"></div>
+                      <div class="col-md-10">
+                        <label>
+                          <input type="checkbox" class="form-control" name="existsInShop" [(ngModel)]="existsInShop" [ngModelOptions]="{standalone: true}" icheck/>
+                          موجود در انبار
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{'has-error':!form.controls['shortDescription'].valid  && form.controls['shortDescription'].touched}">
+                      <label class="col-md-2 control-label">توضیحات مختصر</label>
+
+                      <div class="col-md-10">
+                        <textarea class="form-control" name="shortDescription" [formControl]="form.controls['shortDescription']"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{'has-error':!form.controls['longDescription'].valid  && form.controls['longDescription'].touched}">
+                      <label class="col-md-2 control-label">توضیحات کامل</label>
+
+                      <div class="col-md-10">
+                        <textarea class="form-control" #summernote summernote name="longDescription" [formControl]="form.controls['longDescription']"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div id="tab-2" class="tab-pane">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <button class="btn btn-success pull-left" type="button" (click)="onCreateNewProperty()">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row m-t-md">
+                <div class="col-md-12">
+                  <div class="form-horizontal">
+                    <div class="row" *ngFor="let item of productProperties; let index = index">
+                      <div class="col-md-11">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="col-md-3 control-label">نام مشخصه</label>
+
+                              <div class="col-md-9">
+                                <input type="text" class="form-control" name="propertyName" [(ngModel)]="item.propertyName">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="col-md-3 control-label">مقدار</label>
+
+                              <div class="col-md-9">
+                                <input type="text" class="form-control" name="propertyValue" [(ngModel)]="item.propertyValue">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-1">
+                        <button class="btn btn-danger pull-left" type="button" (click)="onDeleteProperty(index)">
+                          <i class="fa fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="tab-3" class="tab-pane">
+            <div class="panel-body">
+              <div class="row">
+                <div [ngClass]="{'col-md-8': fileList != null, 'col-md-12': fileList == null}">
+                  <dropzone #dropzone [message]="'برای بارگزاری فایل های خود را اینجا بکشید یا کلیک نمایید'" (error)="onUploadError($event)"
+                    (success)="onUploadSuccess($event)" (removedfile)="onRemoveFile($event)"></dropzone>
+                </div>
+                <div class="col-md-4">
+                  <h4 *ngIf="fileList[0]">تصویر اصلی محصول را انتخاب کنید</h4>
+                  <ul class="todo-list ui-sortable" *ngIf="fileList != null">
+                    <li *ngFor="let file of fileList">
+                      <input type="radio" name="file.selected" (checked)="fileItemChecked(file)" icheck [(ngModel)]="file.selected">
+                      <span class="m-r-xs fileNameSpan" attr.title="{{file.name}}">{{file.name}}</span>
+                      <!-- <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 mins</small> -->
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-8" *ngIf="fileList.length != 0">
+                  <ul class="todo-list ui-sortable fileListView">
+                    <li *ngFor="let file of fileList">
+                      <span>{{file.name}}</span>
+                      <a class="text-danger" (click)="onRemoveVirtualFile(file)">(حذف فایل از لیست)</a>
+                      <img class="pull-left" [src]="file.imageAddress" style="height: 100px; width: 100px;" />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="col-md-12 m-t-lg">
+      <div class="ibox">
+        <div class="ibox-content clearfix">
+          <div class="row">
+            <div class="col-md-12 text-left">
+              <a class="btn btn-default btn-md btn-outline" routerLink="/controlpanel/products">انصراف</a>
+              <button class="btn btn-primary btn-md btn-outline" [ladda]="submitting" form="form">
+                <i class="fa fa-save"></i> ذخیره
+              </button>
+              <!--
+              <button class="btn btn-primary btn-md btn-outline" form="form">
+                <i class="fa fa-save"></i> ذخیره و جدید
+              </button> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<route-modal [cancelUrl]="['/controlpanel/shop']" modalClass="modal-lg fadeInDown">
+  <modal-header>
+    <h1>جزئیات فاکتور</h1>
+  </modal-header>
+  <modal-content>
+    <div class="row" *ngIf="!loading">
+
+      <div class="col-md-8">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tr>
+              <td>شماره فاکتور</td>
+              <td class="enNumber uppercase">{{item.invoiceNumber}}</td>
+            </tr>
+            <tr>
+              <td>
+                نام خریدار
+              </td>
+              <td *ngIf="item.user.firstName != null && item.user.lastName != null">
+                {{item.user.firstName + ' ' + item.user.lastName}}
+              </td>
+              <td *ngIf="item.user.firstName == null || item.user.lastName == null">
+                {{item.user.email}}
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                آدرس خریدار
+              </td>
+              <td>
+                {{item.user.address}}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-4 pull-left">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tr>
+              <td>تاریخ فاکتور</td>
+              <td>{{item.createDateTime | jalali:'jYYYY/jMM/jD'}}</td>
+            </tr>
+            <tr>
+              <td>مبلغ فاکتور</td>
+              <td>{{ item.amount | priceToman }}</td>
+            </tr>
+            <tr>
+              <td>وضعیت فاکتور</td>
+              <td>{{ item.invoiceStatus | invoicestatus }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="!loading">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>نام محصول</th>
+                <th>بهای محصول</th>
+                <th>تعداد</th>
+                <th>بهای کل</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let invoiceItem of item.invoiceItems; let index = index;">
+                <td>{{index + 1}}</td>
+                <td>{{invoiceItem.productPrice.product.name}}</td>
+                <td>{{invoiceItem.productPrice.price | priceToman}}</td>
+                <td>{{invoiceItem.count}}</td>
+                <td>{{invoiceItem.productPrice.price * invoiceItem.count | priceToman}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="loading">
+      <p class="text-center">
+        <i class="fa fa-spinner fa-pulse text-success fa-2x"></i>
+      </p>
+    </div>
+
+  </modal-content>
+  <modal-footer>
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-primary" [routerLink]="['/controlpanel/shop']">بستن</button>
+      </div>
+    </div>
+  </modal-footer>
+</route-modal>
