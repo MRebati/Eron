@@ -21,7 +21,9 @@ namespace Eron.Presentation.WebApplication.WebApi.Providers
 
         public ApplicationOAuthProvider(string publicClientId)
         {
-            _publicClientId = publicClientId ?? throw new ArgumentNullException(nameof(publicClientId));
+            if (publicClientId == null)
+                throw new ArgumentNullException(nameof(publicClientId));
+            _publicClientId = publicClientId;
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
